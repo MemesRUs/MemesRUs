@@ -14,4 +14,6 @@ public class Meme {
     @GeneratedValue
     @Column(nullable = false)
     int id;
+
+
 }
