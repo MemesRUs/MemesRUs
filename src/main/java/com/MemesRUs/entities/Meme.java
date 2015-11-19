@@ -34,4 +34,7 @@ public class Meme {
 
     @ManyToOne
     public User user;
+
+
+
 }
