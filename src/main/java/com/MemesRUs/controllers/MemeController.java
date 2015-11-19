@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by cameronoakley on 11/19/15.
@@ -34,10 +33,44 @@ public class MemeController {//test
         return memes.findAll();
     }
 
-    @RequestMapping("/login")
-    public String login(String username, String password, HttpSession session) throws Exception {
-        session.setAttribute("username", username);
+     @RequestMapping("/upload")
+    public void upload(HttpServletResponse response,
+                       HttpSession session,
+                       MultipartFile file,
+                       String topText,
+                       String bottomText,
+                       int popularityRating
+                       ) throws Exception {
 
+        String username = (String) session.getAttribute("username");
+        if (username == null){
+         throw new Exception("Not logged in");
+        }
+        File f = File.createTempFile("file", file.getOriginalFilename(), new File ("public"));
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(file.getBytes());
+
+        User user = users.findOneByUsername(username);
+        Meme memeFile = new Meme();
+        memeFile.originalName = file.getOriginalFilename();
+        memeFile.generatedName = f.getName();
+        memeFile.topText = topText;
+        memeFile.bottomText = bottomText;
+        memeFile.popularityRating = popularityRating;
+        memeFile.user = user;
+        memes.save(memeFile);
+
+
+        response.sendRedirect("/");
+    }
+
+    @RequestMapping("/login")
+    public String login(String username,
+                        String password,
+                        HttpSession session
+                        ) throws Exception {
+
+        session.setAttribute("username", username);
         User user = users.findOneByUsername(username);
         if (user == null) {
             user = new User();
@@ -56,45 +89,6 @@ public class MemeController {//test
         session.invalidate();
         return "redirect:/";
     }
-    @RequestMapping("/create-meme")
-    public String createMeme(HttpSession session,
-                            String topText,
-                            String bottomText,
-                            int popularityRating,
-                            String imageUrl) throws Exception {
-        String username = (String) session.getAttribute("username");
-        if (username == null){
-            throw new Exception("Not logged in");
-        }
-        User user = users.findOneByUsername(username);
-        Meme newMeme = new Meme();
-        newMeme.topText = topText;
-        newMeme.bottomText = bottomText;
-        newMeme.popularityRating = popularityRating;
-        newMeme.imageUrl = imageUrl;
-        newMeme.user = user;
-        memes.save(newMeme);
-
-        return "redirect:/";
-    }
 }
 
-
-
-
-    /*
-     @RequestMapping("/upload")
-    public void upload(HttpServletResponse response,
-                       MultipartFile file) throws IOException {
-        File f = File.createTempFile("file", file.getOriginalFilename(), new File ("public"));
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(file.getBytes());
-
-        Meme memeFile = new Meme();
-        memeFile.originalName = file.getOriginalFilename();
-        memeFile.
-    }
-
-}
-     */
 
