@@ -44,4 +44,6 @@ public class MemeController {//test
         session.invalidate();
         return "redirect:/";
     }
+
+    //DONT GET REKT BY PUSHES AND PULLZZZZZZZZZ
 }
