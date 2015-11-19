@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * Created by cameronoakley on 11/19/15.
  */
 @Controller
-public class MemeController {
+public class MemeController {//test
     @Autowired
     MemeRepository memes;
 
@@ -44,4 +44,6 @@ public class MemeController {
         session.invalidate();
         return "redirect:/";
     }
+
+    //DONT GET REKT BY PUSHES AND PULLZZZZZZZZZ
 }
