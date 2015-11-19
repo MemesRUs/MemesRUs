@@ -62,6 +62,13 @@ public class MemeController {//test
             throw new Exception("Not logged in");
         }
         User user = users.findOneByUsername(username);
+        Meme newMeme = new Meme();
+        newMeme.topText = topText;
+        newMeme.bottomText = bottomText;
+        newMeme.popularityRating = popularityRating;
+        newMeme.imageUrl = imageUrl;
+        newMeme.user = user;
+
 
 
         return "redirect:/";
