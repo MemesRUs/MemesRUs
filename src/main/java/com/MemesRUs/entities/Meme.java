@@ -21,7 +21,7 @@ public class Meme {
 
      */
     @Column(nullable = false)
-    String imageUrl;
+    public String imageUrl;
 
     @Column(nullable = false)
     public int popularityRating;
@@ -32,5 +32,6 @@ public class Meme {
     @Column
     public String bottomText;
 
-
+    @ManyToOne
+    public User user;
 }
