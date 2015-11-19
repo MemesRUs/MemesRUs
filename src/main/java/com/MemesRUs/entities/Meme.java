@@ -21,16 +21,22 @@ public class Meme {
 
      */
     @Column(nullable = false)
-    public String imageUrl;
-
-    @Column(nullable = false)
-    public int popularityRating;
-
-    @Column
     public String topText;
 
-    @Column
+    @Column(nullable = false)
     public String bottomText;
+
+    @Column(nullable = false)
+    public Integer popularityRating;
+
+    @Column(nullable = false)
+    public String imageUrl;
+
+
+
+
+
+
 
     @ManyToOne
     public User user;
