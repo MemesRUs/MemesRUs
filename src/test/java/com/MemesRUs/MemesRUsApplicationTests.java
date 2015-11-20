@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 @SpringApplicationConfiguration(classes = MemesRUsApplication.class)
 @WebAppConfiguration
 public class MemesRUsApplicationTests {
+
 	@Autowired
 	UserRepository userRepo;
 
@@ -47,15 +49,18 @@ public class MemesRUsApplicationTests {
 		);
 		assertTrue(userRepo.count() == 1);
 	}
+
 	@Test
-	public void testCreateMeme() throws Exception {
+	public void testUpload() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.post("/create-meme")
-					.param("topText", "LOLOL")
-					.param("bottomText", "NOT SO FUNNY")
-					.param("popularityRating", "10")
-					.param("imageUrl", "www.LOL.com")
-					.sessionAttr("username", "TestUser")
+				MockMvcRequestBuilders.fileUpload("/upload")
+				.file(testFile)
+				.param("topText", "LOLOL")
+				.param("bottomText", "NOT SO FUNNY")
+				.param("popularityRating", "10")
+				.sessionAttr("username", "TestUser")
+
 		);
 		assertTrue(memeRepo.count() == 1);
 	}

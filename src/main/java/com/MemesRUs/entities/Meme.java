@@ -12,14 +12,12 @@ public class Meme {
     @Column(nullable = false)
     int id;
 
-    /*
     @Column(nullable = false)
     public String originalName;
 
     @Column(nullable = false)
     public String generatedName;
 
-     */
     @Column(nullable = false)
     public String topText;
 
@@ -28,15 +26,6 @@ public class Meme {
 
     @Column(nullable = false)
     public Integer popularityRating;
-
-    @Column(nullable = false)
-    public String imageUrl;
-
-
-
-
-
-
 
     @ManyToOne
     public User user;
