@@ -4,6 +4,7 @@ Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -13,6 +14,7 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
+<<<<<<< HEAD
   // new layoutView();
 
 
@@ -42,4 +44,13 @@ $(function () {
         });
         console.log(ourIMG);
   });
+=======
+
+  var memes = new MemeCollection();
+
+  memes.fetch().then(function (data) {
+    var memeView = new MemeCollectionView({collection: memes});
+  });
+  // new layoutView();
+>>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 });

@@ -65,9 +65,68 @@ $testBorder:1px solid white;
 
 /*---*/
 
+.articleMemes {
+  background-color: #FFDB96;
+}
 
-/*PUT CODE IN HERE*/
+.memeListing {
+  width: 60%;
+  margin: 10px auto;
+}
 
+.imgHolder {
+  width: 400px;
+  height: 350px;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #BB9958;
+  text-align: center;
+  .mainImg {
+    width: 90%;
+    margin: 10px auto;
+    position: relative;
+ }
+}
+
+.memeUL {
+  width: 90%;
+  margin: 0 auto;
+  margin: 0 auto;
+  -webkit-columns: 3;
+  -webkit-column-gap: 1;
+  -webkit-column-rule: 0;
+  columns: 3;
+  column-gap: 3;
+  list-style-type: none;
+  padding: 0;
+  li {
+    // background-color: #FFE8BA;
+    text-align: left;
+    width: 100%;
+    list-style-type: none;
+    display: inline-block;
+  }
+}
+
+.topLayer {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  color: white;
+  font-size: 2em;
+}
+
+.bottomLayer {
+  position: absolute;
+  left: 30%;
+  bottom: 30%;
+  color: white;
+  font-size: 2em;
+}
+
+.iconHeart {
+  width: 20px;
+}
 
 
 /*---*/

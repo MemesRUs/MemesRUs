@@ -1,6 +1,7 @@
 package com.MemesRUs.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by cameronoakley on 11/19/15.
@@ -17,5 +18,9 @@ public class User {
 
     @Column(nullable = false)
     public String password;
+
+    @OneToMany(mappedBy = "user")
+    public List<Meme> meme;
+
 
 }
