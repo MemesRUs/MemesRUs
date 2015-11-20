@@ -20,7 +20,10 @@ module.exports = Backbone.View.extend({
     'click span': 'likeMeme'
   },
   likeMeme: function () {
-    this.model.set({likes: +1});
+    console.log(this);
+    var currLikes = this.model.attributes.likes;
+    this.model.set({likes: currLikes+1});
+    this.model.save();
   },
   initialize: function () {
 

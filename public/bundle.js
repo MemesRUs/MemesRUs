@@ -3,6 +3,15 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
+<<<<<<< HEAD
+=======
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+>>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var MemeModel = require('./model');
 
 module.exports = Backbone.Collection.extend({
@@ -13,7 +22,11 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
+<<<<<<< HEAD
 },{"./model":8,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
+=======
+},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
+>>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -31,7 +44,6 @@ var layoutView = require('./layoutView');
 module.exports = Backbone.View.extend({
   el: '.articleMemes',
   events: {
-
   },
   initialize: function () {
     this.addAll();
@@ -62,6 +74,27 @@ var layoutView = require('./layoutView');
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],5:[function(require,module,exports){
+<<<<<<< HEAD
+=======
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+// login
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
+
+},{}],7:[function(require,module,exports){
+>>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -132,6 +165,11 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
+<<<<<<< HEAD
+=======
+
+  var memes = new MemeCollection();
+>>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 
   // var memes = new MemeCollection();
   //
@@ -163,9 +201,9 @@ module.exports = Backbone.Model.extend({
   defaults: function() {
     return {
       topText: "generic top text",
-      botText: "generic bottom text",
-      image: "generic url",
-      author: "generic author",
+      bottomText: "generic bottom text",
+      imgURL: "generic url",
+      user: "generic author",
       likes: 0
     };
   },
@@ -197,7 +235,10 @@ module.exports = Backbone.View.extend({
     'click span': 'likeMeme'
   },
   likeMeme: function () {
-    this.model.set({likes: +1});
+    console.log(this);
+    var currLikes = this.model.attributes.likes;
+    this.model.set({likes: currLikes+1});
+    this.model.save();
   },
   initialize: function () {
 
@@ -12874,6 +12915,7 @@ module.exports = {
 
     header:[
 
+<<<<<<< HEAD
              "<h1 class='title'> Meme or NAh!?...</h1>",
              "<div class='login'>",
              "</div>",
@@ -12883,6 +12925,17 @@ module.exports = {
              "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
              "<button type='button' name='button' class='loginButton'>continue as guest</button>",
              "</form>"
+=======
+            // <h1 class="title"> Meme or NAh!?...</h1>
+            // <div class="login">
+            // </div>
+            // <form class='inputForm'>
+            // <input type='text' placeholder='username' name='username' class="loginInput">
+            // <input type='text' placeholder='password' name='password' class="loginInput">
+            // <button type="button" name="button">login</button class='loginButton'>
+            // <button type="button" name="button">continue as guest</button class='loginButton'>
+            // </form>
+>>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 
     ].join(''),
 

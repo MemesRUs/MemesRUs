@@ -19,9 +19,9 @@ module.exports = Backbone.Model.extend({
   defaults: function() {
     return {
       topText: "generic top text",
-      botText: "generic bottom text",
-      image: "generic url",
-      author: "generic author",
+      bottomText: "generic bottom text",
+      imgURL: "generic url",
+      user: "generic author",
       likes: 0
     };
   },
