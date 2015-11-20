@@ -13,7 +13,51 @@
                 HEADER
 *****************************************/
 /*---*/
-/*PUT CODE IN HERE*/
+header {
+  border-bottom: 3px solid white;
+  background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
+  height: 300px; }
+
+.title {
+  color: darkcyan;
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 7%; }
+
+header:hover .title {
+  transform: rotate(-30deg);
+  transition: ease-in 0.7s; }
+
+.login {
+  background-color: aqua;
+  height: 257px;
+  width: 30%;
+  margin: auto;
+  border-radius: 5%;
+  opacity: 0.3; }
+
+.loginInput {
+  display: inherit;
+  height: 40px;
+  width: 140%;
+  margin-top: 7%;
+  font-size: 22px; }
+
+.inputForm {
+  margin-left: 39%;
+  position: absolute;
+  margin-top: -14.5%;
+  opacity: 0.8; }
+
+.loginButton {
+  height: 40px;
+  width: 135%;
+  margin-top: 5%;
+  font-size: 23px;
+  font-family: fantasy;
+  text-shadow: 2px 2px 2px white;
+  margin-left: 2%; }
+
 /*---*/
 /*****************************************
                 SECTION
@@ -25,39 +69,6 @@
                 ARTICLE
 *****************************************/
 /*---*/
-<<<<<<< HEAD
-/*PUT CODE IN HERE*/
-/*---*/
-/*****************************************
-                ASIDE
-*****************************************/
-/*---*/
-.formSampleImg {
-  width: 450px;
-  padding: 15px; }
-
-.formImage {
-  width: 350px;
-  display: block;
-  margin: 0 auto; }
-
-.formGenerate {
-  width: 350px;
-  margin: 0 auto; }
-
-.formTopText {
-  width: 250px;
-  margin: 5px 0; }
-
-.formBottomText {
-  width: 250px;
-  margin: 5px 0; }
-
-.formSubButton {
-  float: right;
-  height: 50px; }
-
-=======
 .articleMemes {
   background-color: #FFDB96; }
 
@@ -116,7 +127,31 @@
                 ASIDE
 *****************************************/
 /*---*/
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
+.formSampleImg {
+  width: 450px;
+  padding: 15px; }
+
+.formImage {
+  width: 350px;
+  display: block;
+  margin: 0 auto; }
+
+.formGenerate {
+  width: 350px;
+  margin: 0 auto; }
+
+.formTopText {
+  width: 250px;
+  margin: 5px 0; }
+
+.formBottomText {
+  width: 250px;
+  margin: 5px 0; }
+
+.formSubButton {
+  float: right;
+  height: 50px; }
+
 /*PUT CODE IN HERE*/
 /*---*/
 /*****************************************

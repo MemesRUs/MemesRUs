@@ -5,10 +5,7 @@ Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
-<<<<<<< HEAD
-=======
 var MemeCollectionView = require('./collectionView');
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -16,32 +13,18 @@ var MemeModel = require('./model');
 var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
-<<<<<<< HEAD
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"jquery":10,"underscore":11}],2:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],3:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],4:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],5:[function(require,module,exports){
-
-},{}],6:[function(require,module,exports){
-=======
 module.exports = Backbone.Collection.extend({
   url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
   model: MemeModel
 });
 
 },{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
-<<<<<<< HEAD
-=======
 var MemeCollectionView = require('./collectionView');
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
@@ -84,8 +67,22 @@ var layoutView = require('./layoutView');
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],5:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],6:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+// login
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
 
 },{}],7:[function(require,module,exports){
 var Backbone = require('backbone');
@@ -95,7 +92,6 @@ var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
 var MemeCollectionView = require('./collectionView');
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -105,44 +101,7 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
-<<<<<<< HEAD
-  // new layoutView();
 
-
-  $('.formSubButton').on('click', function(e){
-        e.preventDefault();
-        var topText = $(this).siblings('input[name="topText"]').val();
-        var botText = $(this).siblings('input[name="botText"]').val();
-        var ourIMG = $(this).parent().siblings('.formSampleImg').children('img').attr('src');
-        var ourData = {
-          imgURL: ourIMG,
-          topText:topText,
-          bottomText: botText,
-          likes: 1,
-          user: 'Bob the Builder',
-        };
-
-        $.ajax({
-          url:'https://tiny-tiny.herokuapp.com/collections/memeordeath',
-          method:'POST',
-          data: ourData,
-          success:function(data){
-            console.log("we did this!");
-          },
-          error:function(){
-            console.log("we failed");
-          }
-        });
-        console.log(ourIMG);
-  });
-});
-
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"jquery":10,"underscore":11}],7:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],8:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],9:[function(require,module,exports){
-=======
 
   var memes = new MemeCollection();
 
@@ -150,6 +109,7 @@ arguments[4][1][0].apply(exports,arguments)
     var memeView = new MemeCollectionView({collection: memes});
   });
   // new layoutView();
+
 });
 
 },{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],8:[function(require,module,exports){
@@ -221,7 +181,6 @@ module.exports = Backbone.View.extend({
 });
 
 },{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -2119,11 +2078,7 @@ module.exports = Backbone.View.extend({
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-<<<<<<< HEAD
-},{"jquery":10,"underscore":11}],10:[function(require,module,exports){
-=======
 },{"jquery":11,"underscore":12}],11:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11335,11 +11290,7 @@ return jQuery;
 
 }));
 
-<<<<<<< HEAD
-},{}],11:[function(require,module,exports){
-=======
 },{}],12:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12889,23 +12840,24 @@ return jQuery;
   }
 }.call(this));
 
-<<<<<<< HEAD
-},{}],12:[function(require,module,exports){
-=======
 },{}],13:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 module.exports = {
 
     header:[
 
+            // <h1 class="title"> Meme or NAh!?...</h1>
+            // <div class="login">
+            // </div>
+            // <form class='inputForm'>
+            // <input type='text' placeholder='username' name='username' class="loginInput">
+            // <input type='text' placeholder='password' name='password' class="loginInput">
+            // <button type="button" name="button">login</button class='loginButton'>
+            // <button type="button" name="button">continue as guest</button class='loginButton'>
+            // </form>
+
     ].join(''),
 
-
-
     memes:[
-<<<<<<< HEAD
-
-=======
       '<div class="imgHolder">',
       '<img class="mainImg" src="<%= imgURL %>"',
       '<br>',
@@ -12917,7 +12869,6 @@ module.exports = {
       '</div>',
       '<h4 class="topLayer"> <%= topText %> </h4>',
       '<h4 class="bottomLayer"> <%= botText %> </h4>'
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
     ].join(''),
 
 
@@ -12936,8 +12887,4 @@ module.exports = {
 
 };
 
-<<<<<<< HEAD
-},{}]},{},[6]);
-=======
 },{}]},{},[7]);
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de

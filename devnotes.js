@@ -5,11 +5,13 @@
 
 //ROUTES MADE:
 
+//test for memes url: https://tiny-tiny.herokuapp.com/collections/memeordeath
+
 //LOG IN ROUTE :    /login
 
 //LOG OUT:    /logout
 
-// plain image:
+// plain image: 
 
 // memed up image:
 

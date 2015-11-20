@@ -65,4 +65,27 @@ public class MemesRUsApplicationTests {
 		assertTrue(memeRepo.count() == 1);
 	}
 
+	@Test
+	public void testEdit() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jped", "test img".getBytes());
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/upload")
+						.file(testFile)
+						.param("topText", "LOLOL")
+						.param("bottomText", "NOT SO FUNNY")
+						.param("popularityRating", "10")
+						.sessionAttr("username", "TestUser")
+
+		);
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/edit-meme")
+				.file(testFile)
+				.param("id", "1")
+				.param("topText", "NOT SO FUNNY")
+				.param("bottomText", "LOLOL")
+				.param("popularityRating", "15")
+				.sessionAttr("username", "TestUser")
+		);
+		assertTrue(memeRepo.count() == 1);
+	}
 }
