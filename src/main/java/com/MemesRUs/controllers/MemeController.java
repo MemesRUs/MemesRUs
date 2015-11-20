@@ -4,6 +4,7 @@ import com.MemesRUs.entities.Meme;
 import com.MemesRUs.entities.User;
 import com.MemesRUs.services.MemeRepository;
 import com.MemesRUs.services.UserRepository;
+import com.MemesRUs.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 /**
  * Created by cameronoakley on 11/19/15.
@@ -30,10 +33,25 @@ public class MemeController {//test
     public Iterable<Meme> getMemes(){
         return memes.findAll();
     }
-
+    @RequestMapping("/login")
+    public void login(
+            HttpSession session,
+            String username,
+            String password) throws Exception {
+        session.setAttribute("username", username);
+        User user = users.findOneByUsername(username);
+        if (user == null){
+            user = new User();
+            user.username = username;
+            user.password = PasswordHash.createHash(password);
+            users.save(user);
+        }
+        else if (!PasswordHash.validatePassword(password, user.password)){
+            throw new Exception ("Wrong password bruh!");
+        }
+    }
      @RequestMapping("/upload")
-    public void upload(HttpServletResponse response,
-                       HttpSession session,
+    public void upload(HttpSession session,
                        MultipartFile file,
                        String topText,
                        String bottomText,
@@ -70,7 +88,7 @@ public class MemeController {//test
             throw new Exception ("You can't edit brah!");
         }
         User user = users.findOne(id);
-        Meme memeFile = new Meme();
+        Meme memeFile = memes.findOneByUser(user);
         memeFile.topText = topText;
         memeFile.bottomText = bottomText;
         memeFile.popularityRating = popularityRating;
