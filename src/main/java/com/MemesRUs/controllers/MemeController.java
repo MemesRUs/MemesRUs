@@ -29,6 +29,11 @@ public class MemeController {//test
     @Autowired
     UserRepository users;
 
+    @RequestMapping("/files")
+    public Iterable<Meme> getMemes(){
+        return memes.findAll();
+    }
+
     @RequestMapping("/login")
     public String login(String username, String password, HttpSession session) throws Exception {
         session.setAttribute("username", username);
@@ -52,7 +57,7 @@ public class MemeController {//test
         return "redirect:/";
     }
     @RequestMapping("/create-meme")
-    public String createMem(HttpSession session,
+    public String createMeme(HttpSession session,
                             String topText,
                             String bottomText,
                             int popularityRating,
@@ -62,18 +67,19 @@ public class MemeController {//test
             throw new Exception("Not logged in");
         }
         User user = users.findOneByUsername(username);
-
+        Meme newMeme = new Meme();
+        newMeme.topText = topText;
+        newMeme.bottomText = bottomText;
+        newMeme.popularityRating = popularityRating;
+        newMeme.imageUrl = imageUrl;
+        newMeme.user = user;
+        memes.save(newMeme);
 
         return "redirect:/";
     }
 }
 
-    /*
-     @RequestMapping("/files")
-    public Iterable<Meme> getMemes(){
-        return memes.findAll();
-    }
-     */
+
 
 
     /*
