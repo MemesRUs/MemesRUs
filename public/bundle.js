@@ -5,10 +5,7 @@ Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
-<<<<<<< HEAD
-=======
 var MemeCollectionView = require('./collectionView');
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -16,30 +13,19 @@ var MemeModel = require('./model');
 var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
-<<<<<<< HEAD
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"jquery":10,"underscore":11}],2:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],3:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],4:[function(require,module,exports){
-=======
 module.exports = Backbone.Collection.extend({
   url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
   model: MemeModel
 });
 
 },{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
-<<<<<<< HEAD
-=======
 var MemeCollectionView = require('./collectionView');
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -47,17 +33,9 @@ var MemeModel = require('./model');
 var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
-<<<<<<< HEAD
-// login
-
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"jquery":10,"underscore":11}],5:[function(require,module,exports){
-
-},{}],6:[function(require,module,exports){
-=======
 module.exports = Backbone.View.extend({
   el: '.articleMemes',
   events: {
-
   },
   initialize: function () {
     this.addAll();
@@ -88,21 +66,31 @@ var layoutView = require('./layoutView');
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],5:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],6:[function(require,module,exports){
-
-},{}],7:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
-<<<<<<< HEAD
-=======
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+// login
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
+
+},{}],7:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
 var MemeCollectionView = require('./collectionView');
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 var HeaderView = require('./headerView');
 var FooterView = require('./footerView');
 var FormView = require('./formView');
@@ -112,16 +100,6 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
-<<<<<<< HEAD
-  new layoutView();
-})
-
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"jquery":10,"underscore":11}],7:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],8:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":2,"./formView":3,"./headerView":4,"./layoutView":5,"./model":7,"./modelView":8,"./templates":12,"backbone":9,"dup":1,"jquery":10,"underscore":11}],9:[function(require,module,exports){
-=======
 
   var memes = new MemeCollection();
 
@@ -153,9 +131,9 @@ module.exports = Backbone.Model.extend({
   defaults: function() {
     return {
       topText: "generic top text",
-      botText: "generic bottom text",
-      image: "generic url",
-      author: "generic author",
+      bottomText: "generic bottom text",
+      imgURL: "generic url",
+      user: "generic author",
       likes: 0
     };
   },
@@ -187,10 +165,13 @@ module.exports = Backbone.View.extend({
     'click span': 'likeMeme'
   },
   likeMeme: function () {
-    this.model.set({likes: +1});
+    console.log(this);
+    var currLikes = this.model.attributes.likes;
+    this.model.set({likes: currLikes+1});
+    this.model.save();
   },
   initialize: function () {
-    
+
   },
   render: function () {
     var markup = this.template(this.model.toJSON());
@@ -200,7 +181,6 @@ module.exports = Backbone.View.extend({
 });
 
 },{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -2098,11 +2078,7 @@ module.exports = Backbone.View.extend({
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-<<<<<<< HEAD
-},{"jquery":10,"underscore":11}],10:[function(require,module,exports){
-=======
 },{"jquery":11,"underscore":12}],11:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11314,11 +11290,7 @@ return jQuery;
 
 }));
 
-<<<<<<< HEAD
-},{}],11:[function(require,module,exports){
-=======
 },{}],12:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12868,16 +12840,11 @@ return jQuery;
   }
 }.call(this));
 
-<<<<<<< HEAD
-},{}],12:[function(require,module,exports){
-=======
 },{}],13:[function(require,module,exports){
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
 module.exports = {
 
     header:[
 
-<<<<<<< HEAD
             // <h1 class="title"> Meme or NAh!?...</h1>
             // <div class="login">
             // </div>
@@ -12891,13 +12858,6 @@ module.exports = {
     ].join(''),
 
     memes:[
-
-=======
-    ].join(''),
-
-
-
-    memes:[
       '<div class="imgHolder">',
       '<img class="mainImg" src="<%= imgURL %>"',
       '<br>',
@@ -12909,7 +12869,6 @@ module.exports = {
       '</div>',
       '<h4 class="topLayer"> <%= topText %> </h4>',
       '<h4 class="bottomLayer"> <%= botText %> </h4>'
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
     ].join(''),
 
 
@@ -12928,8 +12887,4 @@ module.exports = {
 
 };
 
-<<<<<<< HEAD
-},{}]},{},[6]);
-=======
 },{}]},{},[7]);
->>>>>>> d5528679a331fd14fa6fa51be1976e7c78b8d4de
