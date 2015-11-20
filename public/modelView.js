@@ -23,7 +23,7 @@ module.exports = Backbone.View.extend({
     this.model.set({likes: +1});
   },
   initialize: function () {
-    
+
   },
   render: function () {
     var markup = this.template(this.model.toJSON());

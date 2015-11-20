@@ -58,6 +58,9 @@ header:hover .title {
   text-shadow: 2px 2px 2px white;
   margin-left: 2%; }
 
+.hidden {
+  display: none; }
+
 /*---*/
 /*****************************************
                 SECTION
