@@ -188,11 +188,12 @@ public class MemeController {
     }
     @RequestMapping("/user-rating")
     public Page userRating(
-            HttpSession session,
-            @RequestParam(defaultValue = "0") int page) throws Exception {
+                    HttpSession session,
+                    @RequestParam(defaultValue = "0") int page
+                    )throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null){
-            throw new Exception ("Not logged in mannnn!");
+            throw new Exception ("Not logged in mann!");
         }
         PageRequest pageRequest = new PageRequest(page, 6);
         User user = users.findOneByUsername(username);
