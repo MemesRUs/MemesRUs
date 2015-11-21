@@ -57,7 +57,7 @@ public class MemesRUsApplicationTests {
 	public void testUpload() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
 				.file(testFile)
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
@@ -71,7 +71,7 @@ public class MemesRUsApplicationTests {
 	public void testUserRatig() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
 				.file(testFile)
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
@@ -85,7 +85,7 @@ public class MemesRUsApplicationTests {
 	public void testEdit() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
 				.file(testFile)
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
@@ -110,7 +110,7 @@ public class MemesRUsApplicationTests {
 	public void testDelete() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
 				.file(testFile)
 				.param("topText", "NOT SO FUNNY")
 				.param("bottomText", "LOLOL")

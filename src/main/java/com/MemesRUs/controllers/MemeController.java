@@ -143,7 +143,7 @@ public class MemeController {
         }
     }
 
-    @RequestMapping("/upload")
+    @RequestMapping("/create-memes")
     public Page<Meme> upload(
                         HttpSession session,
                         MultipartFile file,
@@ -190,7 +190,7 @@ public class MemeController {
     public Page userRating(
                     HttpSession session,
                     @RequestParam(defaultValue = "0") int page
-                    )throws Exception {
+                    )throws Exception{
         String username = (String) session.getAttribute("username");
         if (username == null){
             throw new Exception ("Not logged in mann!");
