@@ -11,9 +11,10 @@
 
 //LOG OUT:    /logout
 
-// plain image: 
+// finished memes: /getmemes
+//
+// upload new img: /upload
 
-// memed up image:
 
 
 //

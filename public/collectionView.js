@@ -15,7 +15,6 @@ var layoutView = require('./layoutView');
 module.exports = Backbone.View.extend({
   el: '.articleMemes',
   events: {
-
   },
   initialize: function () {
     this.addAll();

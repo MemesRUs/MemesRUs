@@ -8,11 +8,160 @@
   </head>
   <body>
     <header>
+      <h1 class="title"> Meme or NAh!?...</h1>
+      <div class="login">
+      </div>
+      <form class='inputForm'>
+      <input type='text' placeholder='username' name='username' class="loginInput">
+      <input type='text' placeholder='password' name='password' class="loginInput">
+      <button type="button" name="button">login</button class='loginButton'>
+      <button type="button" name="button">continue as guest</button class='loginButton'>
+      </form>
 
     </header>
     <section>
 
-        
+      <div class="container sampleMeme">
+
+        <div class="ourMeme">
+          <div class="topTextSamp">
+            This is some text!
+          </div>
+          <div class="botTextSamp">
+            This is Bottom Text!
+          </div>
+        </div>
+
+
+      </div>
+      <article class="createAMeme col-md-6">
+        <h1 style="text-align:center">select your base meme!</h1>
+        <ul class="col-md-12 containImages">
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+          <li class="col-md-4 eachimg">
+            <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+          </li>
+        </ul>
+
+      </article>
+
+      <aside class="col-md-6 newMemeForm">
+        <form action="" class="formGenerate">
+          <h1 style="text-align:center">Create your Own Meme</h1>
+            <div class="col-md 8">
+
+                <input type="text" name="topText" class="formTopText" placeholder="top text">
+                <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
+
+            </div>
+            <div class="formbutton">
+
+              <button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>
+              <button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>
+            </div>
+
+        </form>
+
+
+        <div class="upload">
+
+          <h4>or upload your own image</h4>
+
+
+          <form action="/upload" method="Post" enctype="multipart/form-data" class="uploadImg">
+            <label class="control-label">Select File</label>
+            <input id="input-1" type="file" class="file">
+            <button type="submit" class="newImgSubBut">Upload</button>
+          </form>
+
+
+        </div>
+
+      </aside>
+      <!-- <div class="container sampleMeme">
+          <div class="ourMeme">
+            <div class="topTextSamp">
+              This is some text!
+            </div>
+            <div class="botTextSamp">
+              This is Bottom Text!
+            </div>
+          </div>
+      </div>
+
+
+      <div class="col-md-12 createAMeme">
+            <div class="col-md-6 sampleimages">
+                <h1 style="text-align:center">select your base meme!</h1>
+                <ul class="col-md-12 containImages">
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                  <li class="col-md-4 eachimg">
+                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
+                  </li>
+                </ul>
+                <div class="upload">
+                  <h4>or upload your own image</h4>
+
+
+                  <form action="/upload" method="Post" enctype="multipart/form-data" class="uploadImg">
+                    <input type="file">
+                    <button type="submit" class="newImgSubBut">Upload</button>
+                  </form>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-md-6 newMemeForm">
+
+                      <form action="" class="formGenerate">
+                          <div class="col-md 8">
+
+                              <input type="text" name="topText" class="formTopText" placeholder="top text">
+                              <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
+
+                          </div>
+                          <div class="col-md-4">
+                              <button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>
+                              <button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>
+                          </div>
+
+                      </form>
+
+
+            </div>
+
+      </div> -->
 
 
 
@@ -21,23 +170,24 @@
 
     </footer>
 
-    <!-- <div class="formContainer">
+    <div class="formContainer">
         <div class="formSampleImg">
-            <img class="formImage" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt="">
+
             <form action="" class="formGenerate">
               <div class="col-md 8">
+                <img class="formImage" src="http://brammoforum.com/index.php?action=media;sa=media;in=349;preview" alt="">
                 <input type="text" name="topText" class="formTopText" placeholder="top text">
                 <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
-
-              </div>
-              <div class="col-md-4">
                 <input type="submit" class="formSubButton" value="Submit" name="Submit">
               </div>
+
+
+
 
             </form>
         </div>
 
-    </div> -->
+    </div>
 
 
 
