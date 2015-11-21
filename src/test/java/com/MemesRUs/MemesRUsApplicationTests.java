@@ -67,6 +67,19 @@ public class MemesRUsApplicationTests {
 		);
 		assertTrue(memeRepo.count() == 1);
 	}
+	@Test
+	public void testUserRatig() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/upload")
+				.file(testFile)
+				.param("topText", "LOLOL")
+				.param("bottomText", "NOT SO FUNNY")
+				.param("popularityRating", "11")
+				.sessionAttr("username", "TestUser")
+		);
+		assertTrue(memeRepo.count() == 1);
+	}
 
 	@Test
 	public void testEdit() throws Exception {
@@ -83,28 +96,35 @@ public class MemesRUsApplicationTests {
 		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
 		mockMvc.perform(
 				MockMvcRequestBuilders.fileUpload("/edit-meme")
-						.file(testFile)
-						.param("id", memeList.get(0).id + "")
-						.param("topText", "NOT SO FUNNY")
-						.param("bottomText", "LOLOL")
-						.param("popularityRating", "15")
-						.sessionAttr("username", "TestUser")
+				.file(testFile)
+				.param("id", memeList.get(0).id + "")
+				.param("topText", "NOT SO FUNNY")
+				.param("bottomText", "LOLOL")
+				.param("popularityRating", "15")
+				.sessionAttr("username", "TestUser")
 		);
 		assertTrue(memeRepo.count() == 1);
 	}
-	/*
+
 	@Test
 	public void testDelete() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
 				MockMvcRequestBuilders.fileUpload("/upload")
 				.file(testFile)
-				.param("id", "1")
 				.param("topText", "NOT SO FUNNY")
 				.param("bottomText", "LOLOL")
 				.param("popularityRating", "15")
 				.sessionAttr("username", "TestUser")
 		);
+		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/delete-meme")
+				.file(testFile)
+				.param("id", memeList.get(0).id + "")
+				.sessionAttr("username", "TestUser")
+
+		);
+		assertTrue(memeRepo.count() == 0);
 	}
-	 */
 }
