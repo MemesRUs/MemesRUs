@@ -153,8 +153,35 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
-    this.$el.addClass('hidden');
-    console.log(this);
+    // this.$el.addClass('hidden');
+      var that = $('#but1');
+      var user = that.siblings('input[name="username"]').val();
+      var pass = that.siblings('input[name="password"]').val();
+
+
+    $.ajax({
+      url:"/login",
+      method:"POST",
+      data: {username:user, password:pass},
+      success:function(){
+        console.log("logged in");
+        $.ajax({
+          url:"/get-memes",
+          method:"GET",
+          success:function(data){
+
+          console.log( data);
+          },
+          failure:function(){
+            console.log("nope!");
+          }
+        });
+      },
+      failure:function(){
+        console.log("did not work");
+      }
+    });
+    console.log(that);
   }
 });
 
@@ -199,6 +226,48 @@ var layoutView = require('./layoutView');
 
 $(function () {
 
+  // event:{
+  //   $('body').on('click','.loginButton', function(e){
+  //     e.preventDefault();
+  //     console.log("clicked");
+  //     var Ourdata = {
+  //       user:$(this).sibglings('input[name="username"]').val(),
+  //       pass:$(this).sibglings('input[name="password"]').val(),
+  //     };
+  //     $.ajax({
+  //       url:"/login",
+  //       method:"POST",
+  //       data:{usernamd: user, password: pass},
+  //       success:function(){
+  //         console.log("logged in");
+  //         $.ajax({
+  //           url:"/upload",
+  //           method:"GET",
+  //           success:function(data){
+  //             console.log("we did it"+ data);
+  //           },
+  //           failure:function(){
+  //             console.log("nope!");
+  //           }
+  //         });
+  //       },
+  //       failure:function(){
+  //         console.log("did not work");
+  //       }
+  //     });
+  //   });
+  // }
+
+  // $.ajax({
+  //   url:"/upload",
+  //   method:"GET",
+  //   success:function(data){
+  //     console.log("we did it"+ data);
+  //   },
+  //   failure:function(){
+  //     console.log("nope!");
+  //   }
+  // });
 
 
   // var memes = new MemeCollection();
@@ -207,7 +276,6 @@ $(function () {
   //   var memeView = new MemeCollectionView({collection: memes});
   // });
    new layoutView();
-
 
 });
 
@@ -228,7 +296,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
+  urlRoot: '/getmemes',
   idAttribute: '_id',
   defaults: function() {
     return {
@@ -250,14 +318,14 @@ var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var MemeCollectionView = require('./collectionView');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
+// var MemeCollection = require('./collection');
+// var MemeCollectionView = require('./collectionView');
+// var HeaderView = require('./headerView');
+// var FooterView = require('./footerView');
+// var FormView = require('./formView');
+// var MemeModel = require('./model');
+// var MemeView = require('./modelView');
+// var layoutView = require('./layoutView');
 
 module.exports = Backbone.View.extend({
   tagName: 'div',
@@ -271,6 +339,7 @@ module.exports = Backbone.View.extend({
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
     this.model.save();
+    this.$el.find('#likeCount').html(currLikes+1);
   },
   initialize: function () {
 
@@ -282,7 +351,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
+},{"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -12947,30 +13016,28 @@ module.exports = {
 
     header:[
 
-             "<h1 class='title'> Meme or NAh!?...</h1>",
-             "<div class='login'>",
-             "</div>",
-             "<form class='inputForm'>",
-             "<input type='text' placeholder='username' name='username' class='loginInput'>",
-             "<input type='text' placeholder='password' name='password' class='loginInput'>",
-             "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-             "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-             "</form>"
+      "<h1 class='title'> Meme or NAh!?...</h1>",
+      "<div class='login'>",
+      "</div>",
+      "<form class='inputForm'>",
+      "<input type='text' placeholder='username' name='username' class='loginInput'>",
+      "<input type='text' placeholder='password' name='password' class='loginInput'>",
+      "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
+      "<button type='button' name='button' class='loginButton'>continue as guest</button>",
+      "</form>"
 
     ].join(''),
 
     memes:[
-      '<div class="imgHolder">',
-      '<img class="mainImg" src="<%= imgURL %>"',
-      '<br>',
-      '<ul class="memeUL">',
-      '<li> <img class="iconHeart" src="heart.svg"/><%= likes %> </li>',
-      '<li> <span><img class="iconHeart" src="heart-outlined.svg"/> like it </li></span>',
-      '<li><b><%= user %></b></li>',
-      '</ul>',
-      '</div>',
+      '<div class="imgHolder" style="background-image:url(<%= imgURL %>)">',
       '<h4 class="topLayer"> <%= topText %> </h4>',
-      '<h4 class="bottomLayer"> <%= botText %> </h4>'
+      '<h4 class="bottomLayer"> <%= bottomText %> </h4>',
+      '</div>',
+      '<ul class="memeUL">',
+      '<li> <img class="iconHeart" src="heart.svg"/> <span id="likeCount"><%= likes %></span> </li>',
+      '<li> <span id="liker"><img class="iconHeart" src="heart-outlined.svg"/> like it </li></span>',
+      '<li> <img class="iconUser" src="user.svg"/> <b><%= user %></b></li>',
+      '</ul>'
     ].join(''),
 
 
@@ -12978,6 +13045,14 @@ module.exports = {
     form:[
 
     ].join(''),
+
+    plainIMG:[
+      '<li class="col-md-4 eachimg">',
+      '<a href="#"><img class="thumb" src="<%=%>" alt=""></a>',
+      '</li>',
+
+    ].join(''),
+
 
 
 
