@@ -12,4 +12,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface MemeRepository extends PagingAndSortingRepository<Meme, Integer> {
     Page <Meme> findAllByUser(Pageable pageable, User user);
+    Page <Meme> findAllByPopularityRating(Pageable pageable, User user);
 }

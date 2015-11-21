@@ -34,7 +34,8 @@ public class MemeController {
     UserRepository users;
 
     @PostConstruct
-    public void init() throws IOException {
+    public void init()
+            throws IOException {
         if (memes.count() > 0) {
             return;
         }
@@ -123,21 +124,6 @@ public class MemeController {
         memes.save(memeFileTen);
     }
 
-    @RequestMapping("/get-memes")
-    public Page getMemes(
-                    HttpSession session,
-                    @RequestParam(defaultValue = "0") int page
-                    )throws Exception{
-        String username = (String) session.getAttribute("username");
-        if (username == null){
-        throw new Exception ("Not logged in HOMIE!");
-        }
-        PageRequest pageRequest = new PageRequest(page, 6);
-        User user = users.findOneByUsername(username);
-
-        return memes.findAllByUser(pageRequest, user);
-    }
-
     @RequestMapping("/login")
     public void login(
                     HttpSession session,
@@ -184,8 +170,33 @@ public class MemeController {
         memeFile.popularityRating = popularityRating;
         memeFile.user = user;
         memes.save(memeFile);
-
         return memes.findAllByUser(pageRequest, user);
+    }
+
+    @RequestMapping("/get-memes")
+    public Page getMemes(
+                    HttpSession session,
+                    @RequestParam(defaultValue = "0") int page
+                    )throws Exception{
+        String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception ("Not logged in HOMIE!");
+        }
+        PageRequest pageRequest = new PageRequest(page, 6);
+        User user = users.findOneByUsername(username);
+        return memes.findAllByUser(pageRequest, user);
+    }
+    @RequestMapping("/user-rating")
+    public Page userRating(
+            HttpSession session,
+            @RequestParam(defaultValue = "0") int page) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception ("Not logged in mannnn!");
+        }
+        PageRequest pageRequest = new PageRequest(page, 6);
+        User user = users.findOneByUsername(username);
+        return memes.findAllByPopularityRating(pageRequest, user);
     }
 
     @RequestMapping("/edit-meme")
