@@ -18,9 +18,4 @@ public class User {
 
     @Column(nullable = false)
     public String password;
-
-    @OneToMany(mappedBy = "user")
-    public List<Meme> meme;
-
-
 }

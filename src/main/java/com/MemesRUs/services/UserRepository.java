@@ -1,5 +1,6 @@
 package com.MemesRUs.services;
 
+import com.MemesRUs.entities.Meme;
 import com.MemesRUs.entities.User;
 import org.springframework.data.repository.CrudRepository;
 

@@ -10,6 +10,4 @@ public class MemesRUsApplication {
         SpringApplication.run(MemesRUsApplication.class, args);
     }
 
-    //test comment
-    //test comment2
 }
