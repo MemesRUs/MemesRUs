@@ -15,10 +15,5 @@ var layoutView = require('./layoutView');
 
 $(function () {
 
-  // var memes = new MemeCollection();
-  //
-  // memes.fetch().then(function (data) {
-  //   var memeView = new MemeCollectionView({collection: memes});
-  // });
    new layoutView();
 });

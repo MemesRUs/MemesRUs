@@ -18,8 +18,9 @@ $testBorder:1px solid white;
 /*---*/
 
 
-/*PUT CODE IN HERE*/
-
+body {
+  background-color: #F3F7F9;
+}
 
 /*---*/
 /*****************************************
@@ -107,69 +108,99 @@ header:hover {
 
 /*---*/
 
+  // ALL MEME LISTINGS
 .articleMemes {
-  background-color: #FFDB96;
-}
-
-.memeListing {
-  width: 60%;
-  margin: 10px auto;
-}
-
-.imgHolder {
-  width: 400px;
-  height: 350px;
-  overflow: hidden;
-  margin: 0 auto;
-  background-color: #BB9958;
-  text-align: center;
-  .mainImg {
-    width: 90%;
-    margin: 10px auto;
-    position: relative;
- }
-}
-
-.memeUL {
+  margin: auto;
   width: 90%;
-  margin: 0 auto;
-  margin: 0 auto;
-  -webkit-columns: 3;
-  -webkit-column-gap: 1;
-  -webkit-column-rule: 0;
-  columns: 3;
-  column-gap: 3;
-  list-style-type: none;
-  padding: 0;
-  li {
-    // background-color: #FFE8BA;
-    text-align: left;
-    width: 100%;
-    list-style-type: none;
-    display: inline-block;
+}
+
+  // INDIVIDUAL LISTING
+.memeListing {
+  background-color: #D0E4EC;
+  border-radius: 3%;
+  float: left;
+  margin: 20px 0;
+  padding: 10px 0 0 0;
+  width: 45%;
+  &:nth-child(2n) {
+    float: right;
+  }
+  &:nth-child(3n) {
+    clear: left;
   }
 }
 
+  // INDIVIDUAL IMAGE
+.imgHolder {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  margin: 3px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 95%;
+}
+
+  // TOP TEXT
 .topLayer {
-  position: absolute;
-  top: 5%;
-  left: 30%;
   color: white;
   font-size: 2em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  position: relative;
+  top: 4%;
 }
 
+  // BOTTOM TEXT
 .bottomLayer {
-  position: absolute;
-  left: 30%;
-  bottom: 30%;
   color: white;
   font-size: 2em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  position: relative;
+  top: 65%;
 }
 
+  // LIKES/AUTHOR
+.memeUL {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  -webkit-columns: 3;
+  -webkit-column-gap: 1;
+  -webkit-column-rule: 0;
+  width: 90%;
+  li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0 0 5px 0;
+    text-align: left;
+    width: 100%;
+    &:nth-child(2n) {
+      text-align: center;
+    }
+    &:nth-child(3n) {
+      text-align: right;
+    }
+  }
+}
+
+  // LIKE ICONS
 .iconHeart {
-  width: 20px;
+  opacity: .85;
+  padding: 1%;
+  width: 17px;
 }
 
+#liker:hover {
+  cursor: pointer;
+}
+
+  //USER ICON
+.iconUser {
+  opacity: .85;
+  padding: 1%;
+  width: 15px;
+}
 
 /*---*/
 
