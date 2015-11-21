@@ -4,7 +4,10 @@ import com.MemesRUs.entities.Meme;
 import com.MemesRUs.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -13,4 +16,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface MemeRepository extends PagingAndSortingRepository<Meme, Integer> {
     Page <Meme> findAllByUser(Pageable pageable, User user);
     Page <Meme> findAllByPopularityRating(Pageable pageable, User user);
+
+    @Query ("Select m from Meme m where originalName like '%blank meme%'")
+    Page <Meme> findAllBlankMemes(Pageable pageable, Meme meme);
 }
