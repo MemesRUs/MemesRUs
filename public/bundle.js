@@ -3,15 +3,6 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
-<<<<<<< HEAD
-=======
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var MemeCollectionView = require('./collectionView');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var MemeModel = require('./model');
 
 module.exports = Backbone.Collection.extend({
@@ -22,11 +13,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-<<<<<<< HEAD
 },{"./model":8,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
-=======
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -74,27 +61,6 @@ var layoutView = require('./layoutView');
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
 },{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],5:[function(require,module,exports){
-<<<<<<< HEAD
-=======
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
-
-// login
-
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
-
-},{}],7:[function(require,module,exports){
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -165,17 +131,7 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
-<<<<<<< HEAD
-=======
 
-  var memes = new MemeCollection();
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
-
-  // var memes = new MemeCollection();
-  //
-  // memes.fetch().then(function (data) {
-  //   var memeView = new MemeCollectionView({collection: memes});
-  // });
    new layoutView();
 });
 
@@ -218,14 +174,14 @@ var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
 var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var MemeCollectionView = require('./collectionView');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
+// var MemeCollection = require('./collection');
+// var MemeCollectionView = require('./collectionView');
+// var HeaderView = require('./headerView');
+// var FooterView = require('./footerView');
+// var FormView = require('./formView');
+// var MemeModel = require('./model');
+// var MemeView = require('./modelView');
+// var layoutView = require('./layoutView');
 
 module.exports = Backbone.View.extend({
   tagName: 'div',
@@ -239,6 +195,7 @@ module.exports = Backbone.View.extend({
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
     this.model.save();
+    this.$el.find('#likeCount').html(currLikes+1);
   },
   initialize: function () {
 
@@ -250,7 +207,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
+},{"./templates":13,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -12915,42 +12872,28 @@ module.exports = {
 
     header:[
 
-<<<<<<< HEAD
-             "<h1 class='title'> Meme or NAh!?...</h1>",
-             "<div class='login'>",
-             "</div>",
-             "<form class='inputForm'>",
-             "<input type='text' placeholder='username' name='username' class='loginInput'>",
-             "<input type='text' placeholder='password' name='password' class='loginInput'>",
-             "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-             "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-             "</form>"
-=======
-            // <h1 class="title"> Meme or NAh!?...</h1>
-            // <div class="login">
-            // </div>
-            // <form class='inputForm'>
-            // <input type='text' placeholder='username' name='username' class="loginInput">
-            // <input type='text' placeholder='password' name='password' class="loginInput">
-            // <button type="button" name="button">login</button class='loginButton'>
-            // <button type="button" name="button">continue as guest</button class='loginButton'>
-            // </form>
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
+      "<h1 class='title'> Meme or NAh!?...</h1>",
+      "<div class='login'>",
+      "</div>",
+      "<form class='inputForm'>",
+      "<input type='text' placeholder='username' name='username' class='loginInput'>",
+      "<input type='text' placeholder='password' name='password' class='loginInput'>",
+      "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
+      "<button type='button' name='button' class='loginButton'>continue as guest</button>",
+      "</form>"
 
     ].join(''),
 
     memes:[
-      '<div class="imgHolder">',
-      '<img class="mainImg" src="<%= imgURL %>"',
-      '<br>',
-      '<ul class="memeUL">',
-      '<li> <img class="iconHeart" src="heart.svg"/><%= likes %> </li>',
-      '<li> <span><img class="iconHeart" src="heart-outlined.svg"/> like it </li></span>',
-      '<li><b><%= user %></b></li>',
-      '</ul>',
-      '</div>',
+      '<div class="imgHolder" style="background-image:url(<%= imgURL %>)">',
       '<h4 class="topLayer"> <%= topText %> </h4>',
-      '<h4 class="bottomLayer"> <%= botText %> </h4>'
+      '<h4 class="bottomLayer"> <%= bottomText %> </h4>',
+      '</div>',
+      '<ul class="memeUL">',
+      '<li> <img class="iconHeart" src="heart.svg"/> <span id="likeCount"><%= likes %></span> </li>',
+      '<li> <span id="liker"><img class="iconHeart" src="heart-outlined.svg"/> like it </li></span>',
+      '<li> <img class="iconUser" src="user.svg"/> <b><%= user %></b></li>',
+      '</ul>'
     ].join(''),
 
 
