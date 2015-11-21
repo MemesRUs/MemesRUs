@@ -1,5 +1,6 @@
 package com.MemesRUs;
 
+import com.MemesRUs.entities.Meme;
 import com.MemesRUs.services.MemeRepository;
 import com.MemesRUs.services.UserRepository;
 import org.junit.Before;
@@ -14,6 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -77,14 +80,15 @@ public class MemesRUsApplicationTests {
 				.sessionAttr("username", "TestUser")
 
 		);
+		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
 		mockMvc.perform(
 				MockMvcRequestBuilders.fileUpload("/edit-meme")
-				.file(testFile)
-				.param("id", "1")
-				.param("topText", "NOT SO FUNNY")
-				.param("bottomText", "LOLOL")
-				.param("popularityRating", "15")
-				.sessionAttr("username", "TestUser")
+						.file(testFile)
+						.param("id", memeList.get(0).id + "")
+						.param("topText", "NOT SO FUNNY")
+						.param("bottomText", "LOLOL")
+						.param("popularityRating", "15")
+						.sessionAttr("username", "TestUser")
 		);
 		assertTrue(memeRepo.count() == 1);
 	}
