@@ -61,12 +61,12 @@ header {
 
 .divIcon1 {
   margin-left: 88%;
-  margin-top: 2%;
+  margin-top: -9%;
   height: 47px; }
 
 .divIcon2 {
   margin-left: 93%;
-  margin-top: -4%;
+  margin-top: -11%;
   height: 47px; }
 
 /*---*/
@@ -274,6 +274,7 @@ footer {
   margin-top: 20px; }
 
 .divIcon {
-  height: 47px; }
+  height: 47px;
+  margin-left: 166px; }
 
 /*---*/
