@@ -13,6 +13,25 @@ var layoutView = require('./layoutView');
 
 
 
+module.exports = Backbone.View.extend({
+
+  className:'container sampleMeme',
+
+  initialize:function(){
+
+  },
+
+  template: _.template(tmpl.formPage),
+
+  render:function(){
+    ourHTML = this.template(this.model);
+    this.$el.html(ourHTML);
+    return this;
+  }
+
+
+
+});
 
 
 //

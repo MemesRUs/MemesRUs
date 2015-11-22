@@ -24,6 +24,7 @@ module.exports = Backbone.View.extend({
     this.$el.append(memeView.render().el);
   },
   addAll: function () {
+    this.$el.html("");
     _.each(this.collection.models, this.addOne, this);
   }
 });

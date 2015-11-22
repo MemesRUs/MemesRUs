@@ -3,6 +3,92 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
+var MemeModel = require('./model');
+
+module.exports = Backbone.Collection.extend({
+  url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
+  model: MemeModel,
+  initialize: function() {
+    console.log("HELLO FROM MEME COLLECTION");
+  }
+});
+
+},{"./model":8,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+module.exports = Backbone.View.extend({
+  el: '.articleMemes',
+  events: {
+  },
+  initialize: function () {
+    this.addAll();
+  },
+  addOne: function (memeModel) {
+    var memeView = new MemeView({model: memeModel});
+    this.$el.append(memeView.render().el);
+  },
+  addAll: function () {
+    this.$el.html("");
+    _.each(this.collection.models, this.addOne, this);
+  }
+});
+
+},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],3:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+module.exports = Backbone.View.extend({
+  // footer navigation
+
+  initialize: function () {
+    console.log('HELLOOOO');
+  },
+
+  template: _.template(tmpl.header),
+
+  events: {
+    'click #but1': 'signInHide'
+  },
+
+  render: function () {
+    var markup = this.template({});
+    this.$el.html(markup);
+    return this;
+  },
+
+  signInHide: function(){
+    this.$el.find('.login').addClass('hidden');
+    console.log(this);
+  }
+});
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
 var tmpl = require('./templates');
 var MemeCollection = require('./collection');
 var HeaderView = require('./headerView');
@@ -14,6 +100,25 @@ var layoutView = require('./layoutView');
 
 
 
+module.exports = Backbone.View.extend({
+
+  className:'container sampleMeme',
+
+  initialize:function(){
+
+  },
+
+  template: _.template(tmpl.formPage),
+
+  render:function(){
+    ourHTML = this.template(this.model);
+    this.$el.html(ourHTML);
+    return this;
+  }
+
+
+
+});
 
 
 //
@@ -67,94 +172,7 @@ var layoutView = require('./layoutView');
 //     });
 // });
 
-},{"./collection":2,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"jquery":12,"underscore":13}],2:[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var MemeModel = require('./model');
-
-module.exports = Backbone.Collection.extend({
-  url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
-  model: MemeModel,
-  initialize: function() {
-    console.log("HELLO FROM MEME COLLECTION");
-  }
-});
-
-},{"./model":9,"backbone":11,"jquery":12,"underscore":13}],3:[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var MemeCollectionView = require('./collectionView');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
-
-module.exports = Backbone.View.extend({
-  el: '.articleMemes',
-  events: {
-  },
-  initialize: function () {
-    this.addAll();
-  },
-  addOne: function (memeModel) {
-    var memeView = new MemeView({model: memeModel});
-    this.$el.append(memeView.render().el);
-  },
-  addAll: function () {
-    _.each(this.collection.models, this.addOne, this);
-  }
-});
-
-},{"./collection":2,"./collectionView":3,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"jquery":12,"underscore":13}],4:[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
-
-module.exports = Backbone.View.extend({
-  // footer navigation
-
-  initialize: function () {
-    console.log('HELLOOOO');
-  },
-
-  template: _.template(tmpl.header),
-
-  events: {
-    'click #but1': 'signInHide'
-  },
-
-  render: function () {
-    var markup = this.template({});
-    this.$el.html(markup);
-    return this;
-  },
-
-  signInHide: function(){
-    this.$el.find('.login').addClass('hidden');
-    console.log(this);
-  }
-});
-
-},{"./collection":2,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"jquery":12,"underscore":13}],5:[function(require,module,exports){
-arguments[4][1][0].apply(exports,arguments)
-},{"./collection":2,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"dup":1,"jquery":12,"underscore":13}],6:[function(require,module,exports){
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],5:[function(require,module,exports){
   var Backbone = require('backbone');
   var $ = require('jquery');
   Backbone.$ = $;
@@ -224,7 +242,7 @@ arguments[4][1][0].apply(exports,arguments)
 }
 });
 
-},{"./templates":15,"backbone":11,"jquery":12,"underscore":13}],7:[function(require,module,exports){
+},{"./templates":14,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -240,6 +258,7 @@ module.exports = Backbone.View.extend({
      var self = this;
      var headerHTML = new HeaderView();
      var memeCollection = new MemeCollection();
+     self.$el.find('header').html(headerHTML.render().el);
      memeCollection.fetch().then(function (){
        self.$el.find('header').html(headerHTML.render().el);
        new MemeCollectionView({collection: memeCollection});
@@ -247,7 +266,7 @@ module.exports = Backbone.View.extend({
    },
  });
 
-},{"./collection":2,"./collectionView":3,"./headerView":6,"backbone":11,"jquery":12,"underscore":13}],8:[function(require,module,exports){
+},{"./collection":1,"./collectionView":2,"./headerView":5,"backbone":10,"jquery":11,"underscore":12}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -270,9 +289,11 @@ $(function () {
    new Router();
    Backbone.history.start();
 
+   
+
 });
 
-},{"./layoutView":7,"./router":14,"backbone":11,"jquery":12,"underscore":13}],9:[function(require,module,exports){
+},{"./layoutView":6,"./router":13,"backbone":10,"jquery":11,"underscore":12}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -305,7 +326,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./collection":2,"./collectionView":3,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"jquery":12,"underscore":13}],10:[function(require,module,exports){
+},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -347,7 +368,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":15,"backbone":11,"jquery":12,"underscore":13}],11:[function(require,module,exports){
+},{"./templates":14,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -2245,7 +2266,7 @@ module.exports = Backbone.View.extend({
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":12,"underscore":13}],12:[function(require,module,exports){
+},{"jquery":11,"underscore":12}],11:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11457,7 +11478,7 @@ return jQuery;
 
 }));
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13007,31 +13028,43 @@ return jQuery;
   }
 }.call(this));
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
-var FormView = require('./FormView');
+var FormView = require('./formView');
 var layoutView = require('./layoutView');
+var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
+
 
 module.exports = Backbone.Router.extend({
     routes: {
       '': 'homePage',
       'addMemes': 'addMeme',
+      'userMemes': 'userMemes',
 
     },
 
     initialize: function(){},
 
-    homePage: function(){
-      console.log('home');
+    userMemes:function(){
+      $('article').html("");
+      //get a view going that loads a collection of get-memes and puts them in the article.
+
     },
 
+    homePage: function(){
+      
+       new layoutView();
+
+  },
+
     addMeme: function(){
-      // var blankColl = new Collection();
-      // blankColl.fetch().then(function(){
-      //   var newFrom = new FormView();
-      //   $
+      console.log('we clicked this correctly');
+        $('article').html("");
+        var formView = new FormView();
+        $('article').html(formView.render().el);
       console.log('yay you made it!');
     }
 
@@ -13040,14 +13073,14 @@ module.exports = Backbone.Router.extend({
 
 });
 
-},{"./FormView":1,"./layoutView":7,"backbone":11,"jquery":12,"underscore":13}],15:[function(require,module,exports){
+},{"./collection":1,"./collectionView":2,"./formView":4,"./layoutView":6,"backbone":10,"jquery":11,"underscore":12}],14:[function(require,module,exports){
 module.exports = {
 
     header:[
 
 
              "<h1 class='title'> Meme or Die!!?...</h1>",
-             //"<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
+            //  "<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
              "<div class='login'>",
              "</div>",
              "<form class='inputForm'>",
@@ -13078,8 +13111,8 @@ module.exports = {
 
 
     formPage:[
-      '<div class="container sampleMeme">',
       '<div class="memeListing sampleList">',
+      '<a href="#">home</a>',
       '<div class="imgHolder" style="background-image:url()">',
       '<h4 class="topLayer"> topText</h4>',
       '<h4 class="bottomLayer"> bottomText</h4>',
@@ -13100,8 +13133,8 @@ module.exports = {
       '<form action="" class="formGenerate">',
       '<h1 style="text-align:center">Create your Own Meme</h1>',
       '<div class="col-md 8">',
-      '<input type="text" name="topText" class="formTopText" placeholder="top text">',
-      '<input type="text" name="botText" class="formBottomText" placeholder="bottom text">',
+      '<input type="text" name="topText" class="formTopText" maxlength="65" autocomplete="off" placeholder="top text">',
+      '<input type="text" name="botText" class="formBottomText" maxlength="65" autocomplete="off" placeholder="bottom text">',
       '</div>',
       '<div class="formbutton">',
       '<button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>',
@@ -13138,4 +13171,4 @@ module.exports = {
 
 };
 
-},{}]},{},[8]);
+},{}]},{},[7]);
