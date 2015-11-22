@@ -7,7 +7,7 @@
 
     // Popular page showing the top ten (or whatever) rated memes OR is this just what our home page should look like?
 
-
+// CHARACTER LIMITS: 65 ON BOTH TOP AND BOTTOM
 
 //ROUTES MADE:
 

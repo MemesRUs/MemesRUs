@@ -7,13 +7,14 @@ var tmpl = require('./templates');
 module.exports = Backbone.View.extend({
   //  el: '.login',
   initialize: function () {
-    console.log('HELLOOOO');
+
   },
 
   template: _.template(tmpl.header),
 
   events: {
-    'click #but1': 'signInHide'
+    'click #but1': 'signInHide',
+    'click .loginButton': 'continueLogin'
   },
 
   render: function () {
@@ -23,6 +24,7 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
+
     // this.$el.addClass('hidden');
       var that = $('#but1');
       var user = that.siblings('input[name="username"]').val();

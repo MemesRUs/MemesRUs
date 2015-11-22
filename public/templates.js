@@ -2,15 +2,15 @@ module.exports = {
 
     header:[
 
-      "<h1 class='title'> Meme or NAh!?...</h1>",
+      "<h1 class='title'> Meme or Death</h1>",
       "<div class='login'>",
-      "</div>",
       "<form class='inputForm'>",
       "<input type='text' placeholder='username' name='username' class='loginInput'>",
-      "<input type='text' placeholder='password' name='password' class='loginInput'>",
+      "<input type='password' placeholder='password' name='password' class='loginInput'>",
       "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
       "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-      "</form>"
+      "</form>",
+      "</div>"
 
     ].join(''),
 
