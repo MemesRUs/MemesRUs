@@ -12,26 +12,14 @@ var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
 module.exports = Backbone.View.extend({
-  // footer navigation
-
-  initialize: function () {
-    console.log('HELLOOOO');
-  },
-
-  template: _.template(tmpl.header),
-
+  initialize: function () {},
+  template: _.template(tmpl.footer),
   events: {
-    'click #but1': 'signInHide'
+    
   },
-
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
-  },
-
-  signInHide: function(){
-    this.$el.find('.login').addClass('hidden');
-    console.log(this);
   }
 });

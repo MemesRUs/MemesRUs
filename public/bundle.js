@@ -181,27 +181,15 @@ var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
 module.exports = Backbone.View.extend({
-  // footer navigation
-
-  initialize: function () {
-    console.log('HELLOOOO');
-  },
-
-  template: _.template(tmpl.header),
-
+  initialize: function () {},
+  template: _.template(tmpl.footer),
   events: {
-    'click #but1': 'signInHide'
+    
   },
-
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
-  },
-
-  signInHide: function(){
-    this.$el.find('.login').addClass('hidden');
-    console.log(this);
   }
 });
 
@@ -326,60 +314,44 @@ module.exports = Backbone.View.extend({
   var tmpl = require('./templates');
 
   module.exports = Backbone.View.extend({
-    //  el: '.login',
-
-
-
   initialize: function () {
-
+    var loggedIn = false;
   },
-
   template: _.template(tmpl.header),
-
   events: {
-    'click #but1': 'signInHide',
-    'click .loginButton': 'continueLogin'
+    'click #but1': 'signInHide'
+    // 'click #homeTest': 'homeRedirect'
   },
-
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
   },
-
   signInHide: function(){
-    console.log("clicked right");
-    // this.$el.find('.login').addClass('hidden');
-    //
-    //
-    // console.log(this);
 
-
-
-    // this.$el.addClass('hidden');
       var that = $('#but1');
       var user = that.siblings('input[name="username"]').val();
       var pass = that.siblings('input[name="password"]').val();
-
 
     $.ajax({
       url:"/login",
       method:"POST",
       data: {username:user, password:pass},
       success:function(){
-        console.log("logged in");
-        window.location.hash = "#";
-        // $.ajax({
-        //   url:"/get-memes",
-        //   method:"GET",
-        //   success:function(data){
-        //
-        //   console.log( data);
-        //   },
-        //   failure:function(){
-        //     console.log("nope!");
-        //   }
-        // });
+        loggedIn = true;
+        $('.inputForm').addClass('hidden');
+        $('.login').css('margin-top','1%');
+        $('.headerNav').removeClass('hidden');
+        $.ajax({
+          url:"/get-all-memes",
+          method:"GET",
+          success:function(data){
+            console.log(data);
+          },
+          failure:function(){
+            console.log("nope!");
+          }
+        });
       },
       failure:function(){
         console.log("did not work");
@@ -387,6 +359,17 @@ module.exports = Backbone.View.extend({
     });
     console.log(that);
 }
+// homeRedirect: function() {
+//   if(loggedIn === true) {
+//     console.log("you're logged in");
+//     $('.articleMemes').html(
+//     memeCollection.fetch().then(function (){
+//       new MemeCollectionView({collection: memeCollection});
+//     }));
+//   } else {
+//     console.log("you're not logged in");
+//   }
+//  }
 });
 
 },{"./templates":18,"backbone":14,"jquery":15,"underscore":16}],10:[function(require,module,exports){
@@ -397,6 +380,7 @@ var _ = require('underscore');
 var MemeCollection = require('./collection');
 var MemeCollectionView = require('./collectionView');
 var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
 
 module.exports = Backbone.View.extend({
    el: '#layout',
@@ -404,15 +388,17 @@ module.exports = Backbone.View.extend({
    initialize: function(){
      var self = this;
      var headerHTML = new HeaderView();
+     var footerHTML = new FooterView();
      var memeCollection = new MemeCollection();
      memeCollection.fetch().then(function (){
        self.$el.find('header').html(headerHTML.render().el);
        new MemeCollectionView({collection: memeCollection});
+       self.$el.find('footer').html(footerHTML.render().el);
      });
    },
  });
 
-},{"./collection":5,"./collectionView":6,"./headerView":9,"backbone":14,"jquery":15,"underscore":16}],11:[function(require,module,exports){
+},{"./collection":5,"./collectionView":6,"./footerView":7,"./headerView":9,"backbone":14,"jquery":15,"underscore":16}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -456,7 +442,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: '/get-memes',
+  urlRoot: '/get-all-memes',
   idAttribute: '_id',
   defaults: function() {
     return {
@@ -498,10 +484,7 @@ module.exports = Backbone.View.extend({
     console.log(this);
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
-    // this.model.save();
     this.$el.find('#likeCount').html(currLikes+1);
-    this.model.set({topText: "how many characters will fit in here? how many? how many? more? more?"});
-    this.model.set({bottomText: "how many characters will fit in here? how many? how many? more? more?"});
     this.model.save();
   },
   initialize: function () {
@@ -13230,20 +13213,21 @@ module.exports = {
 
     header:[
 
-
-             "<h1 class='title'> Meme or Die!!?...</h1>",
-            //  "<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
+             "<h1 class='title'> Meme or Die</h1>",
              "<div class='login'>",
-             "</div>",
              "<form class='inputForm'>",
              "<input type='text' placeholder='username' name='username' class='loginInput'>",
-             "<input type='text' placeholder='password' name='password' class='loginInput'>",
+             "<input type='password' placeholder='password' name='password' class='loginInput'>",
              "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-             "<button type='button' name='button' class='loginButton'>continue as guest</button>",
+             "<button type='button' name='button' id='but2' class='loginButton'>continue as guest</button>",
              "</form>",
-
-             "<div class='headerDiv'> <img src='icons/home.jpg' class='divIcon1'/></div>",
-             "<div class='headerDiv'><img src='icons/add64.png'/ class='divIcon2'> </div>"
+             "<ul class='headerNav hidden'>",
+             "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
+             "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
+             "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
+             "<li><a href='#'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "</ul>",
+             "</div>"
 
 
     ].join(''),
@@ -13307,8 +13291,13 @@ module.exports = {
 
 
     footer:[
-
-
+      '<ul id="footerNav">',
+      '<li><img class="footerIcon" src="icons/facebook-with-circle.svg"/></li>',
+      '<li><img class="footerIcon" src="icons/twitter-with-circle.svg"/></li>',
+      '<li><img class="footerIcon" src="icons/pinterest-with-circle.svg"/></li>',
+      '</ul>',
+      '&copy; Meme or Die 2015<br>',
+      '<a href="http://www.entypo.com">Entypo</a> pictograms by Daniel Bruce<br>',
     ].join('')
 
 

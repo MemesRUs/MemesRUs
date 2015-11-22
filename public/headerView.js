@@ -5,60 +5,44 @@
   var tmpl = require('./templates');
 
   module.exports = Backbone.View.extend({
-    //  el: '.login',
-
-
-
   initialize: function () {
-
+    var loggedIn = false;
   },
-
   template: _.template(tmpl.header),
-
   events: {
-    'click #but1': 'signInHide',
-    'click .loginButton': 'continueLogin'
+    'click #but1': 'signInHide'
+    // 'click #homeTest': 'homeRedirect'
   },
-
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
   },
-
   signInHide: function(){
-    console.log("clicked right");
-    // this.$el.find('.login').addClass('hidden');
-    //
-    //
-    // console.log(this);
 
-
-
-    // this.$el.addClass('hidden');
       var that = $('#but1');
       var user = that.siblings('input[name="username"]').val();
       var pass = that.siblings('input[name="password"]').val();
-
 
     $.ajax({
       url:"/login",
       method:"POST",
       data: {username:user, password:pass},
       success:function(){
-        console.log("logged in");
-        window.location.hash = "#";
-        // $.ajax({
-        //   url:"/get-memes",
-        //   method:"GET",
-        //   success:function(data){
-        //
-        //   console.log( data);
-        //   },
-        //   failure:function(){
-        //     console.log("nope!");
-        //   }
-        // });
+        loggedIn = true;
+        $('.inputForm').addClass('hidden');
+        $('.login').css('margin-top','1%');
+        $('.headerNav').removeClass('hidden');
+        $.ajax({
+          url:"/get-all-memes",
+          method:"GET",
+          success:function(data){
+            console.log(data);
+          },
+          failure:function(){
+            console.log("nope!");
+          }
+        });
       },
       failure:function(){
         console.log("did not work");
@@ -66,4 +50,15 @@
     });
     console.log(that);
 }
+// homeRedirect: function() {
+//   if(loggedIn === true) {
+//     console.log("you're logged in");
+//     $('.articleMemes').html(
+//     memeCollection.fetch().then(function (){
+//       new MemeCollectionView({collection: memeCollection});
+//     }));
+//   } else {
+//     console.log("you're not logged in");
+//   }
+//  }
 });

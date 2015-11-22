@@ -23,10 +23,7 @@ module.exports = Backbone.View.extend({
     console.log(this);
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
-    // this.model.save();
     this.$el.find('#likeCount').html(currLikes+1);
-    this.model.set({topText: "how many characters will fit in here? how many? how many? more? more?"});
-    this.model.set({bottomText: "how many characters will fit in here? how many? how many? more? more?"});
     this.model.save();
   },
   initialize: function () {
