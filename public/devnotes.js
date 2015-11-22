@@ -27,7 +27,7 @@
 //
 // GET-ALL-MEMES:    /get-all-memes
 //
-//
+//  BLANK IMAGES: /get-blank-memes
 
 
 //
