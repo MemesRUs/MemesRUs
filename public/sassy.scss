@@ -35,14 +35,9 @@ body {
 /*---*/
 
 header {
-
   border-bottom: 3px solid black;
   background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
-  height: 300px;
-}
-
-.newHeader{
-  background: black;
+  height: 100px;
 }
 
 .title {
@@ -59,11 +54,12 @@ header {
 }
 
 .login {
+  margin-top: 2.5%;
   display: inline-block;
   background-color: $mainMedColor;
   width: auto;
   border-radius: 5%;
-  opacity: 0.5;
+  opacity: 0.75;
   float: right;
 }
 
@@ -342,44 +338,26 @@ header {
 
 /*---*/
 
-
 footer {
-  border-top: 3px solid black;
-  background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
-  height: 110px;
+  height: 100px;
+  margin: 0;
+  text-align: center;
 }
 
-.footerBut{
-  height: 40px;
-  width: 100%;
-  font-size: 25px;
-  margin-top: 8%;
+#footerNav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li {
+    display: inline-block;
+  }
 }
 
-.footerDiv1 {
-  height: 0px; // height 50px
-  width: 3%;
-  background: #FFDB96;
-  display: inline-block;
-  margin-left: 77%;
-  margin-top: 20px;}
-
-.footerDiv2 {
-  height: 0px;
-      width: 3%;
-      background: #FFDB96;
-      display: inline-block;
-      margin-left: 3%;
-      margin-top: 20px;
+.footerIcon {
+  margin: 5px;
+  opacity: .7;
+  width: 25px;
 }
-
-.divIcon {
-  height: 47px;
-  margin-left: 166px;
-}
-
-
-
 
 
 /*---*/

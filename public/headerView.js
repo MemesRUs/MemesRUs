@@ -5,41 +5,23 @@
   var tmpl = require('./templates');
 
   module.exports = Backbone.View.extend({
-    //  el: '.login',
-
-
-
   initialize: function () {
 
   },
-
   template: _.template(tmpl.header),
-
   events: {
     'click #but1': 'signInHide',
-    'click .loginButton': 'continueLogin'
+    'click #but2': 'continueLogin'
   },
-
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
   },
-
   signInHide: function(){
-
-    // this.$el.find('.login').addClass('hidden');
-    //
-    //
-    // console.log(this);
-
-
-
-    // this.$el.addClass('hidden');
       var that = $('#but1');
       var user = that.siblings('input[name="username"]').val();
       var pass = that.siblings('input[name="password"]').val();
-
 
     $.ajax({
       url:"/login",
@@ -51,8 +33,7 @@
           url:"/get-memes",
           method:"GET",
           success:function(data){
-
-          console.log( data);
+            console.log(data);
           },
           failure:function(){
             console.log("nope!");
@@ -64,5 +45,8 @@
       }
     });
     console.log(that);
+},
+continueLogin: function () {
+
 }
 });
