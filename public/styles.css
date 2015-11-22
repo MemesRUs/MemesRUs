@@ -162,7 +162,8 @@ header {
                 FORM PAGE
 *****************************************/
 .sampleMeme {
-  background-color: blue; }
+  background-color: #F3F7F9;
+  height: auto; }
 
 .ourMeme {
   background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d");
@@ -175,16 +176,28 @@ header {
   text-align: center; }
 
 .createAMeme {
-  background-color: red; }
+  border-radius: 3%;
+  background-color: #2D728D;
+  margin-right: 1%;
+  display: inline-block;
+  width: 45%; }
 
 .sampleimages {
-  background-color: orange; }
+  width: 25%;
+  margin: 5px; }
 
 .newMemeForm {
-  background-color: purple; }
+  width: 45%;
+  display: inline-block;
+  border-radius: 3%;
+  background-color: #2D728D;
+  margin-left: 1%; }
+  .newMemeForm h1 {
+    margin-top: -10px;
+    padding: 0; }
 
 .thumb {
-  width: 100%; }
+  width: 150px; }
 
 .containImages {
   list-style: none; }
@@ -220,21 +233,34 @@ header {
 .formTopText {
   width: 80%;
   display: block;
-  margin: 30px auto; }
+  margin: 20px auto; }
 
 .formBottomText {
   width: 80%;
   display: block;
-  margin: 30px auto; }
+  margin: 20px auto; }
 
-.formbutton button {
-  margin: 0 50px; }
+.formbutton {
+  margin-bottom: 10px; }
 
 .formSubButton {
-  width: 230px; }
+  border-radius: 5%;
+  margin-bottom: 10px;
+  background-color: #57C088;
+  border: 1px solid #012837;
+  width: 30%;
+  float: right;
+  margin-left: 5px;
+  margin-bottom: 20px; }
 
 .previewMeme {
-  float: right; }
+  border-radius: 5%;
+  background-color: #FFE092;
+  border: 1px solid #012837;
+  width: 30%;
+  float: right;
+  margin-right: 10px;
+  margin-bottom: 10px; }
 
 .formGenerate {
   padding: 30px 15px;
