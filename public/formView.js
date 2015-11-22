@@ -32,18 +32,21 @@ module.exports = Backbone.View.extend({
 
   newMeme: function(e){
     e.preventDefault();
-    // var ourData ={
-    //       imgURL: this.$el.find('.chosenOne').attr('src'),
-    //       topText: that.siblings('input[name="topText"]').val(),
-    //       bottomText: that.siblings('input[name="botText"]').val(),
-    //     };
-    // var newMeme = new MemeModel(ourData);
-    // newMeme.save();
-
-  },
+  //   var ourData ={
+  //         imgURL: this.$el.find('.chosenOne').attr('src'),
+  //         topText: this.$el.find('input[name="topText"]').val(),
+  //         bottomText: this.$el.find('input[name="botText"]').val(),
+  //       };
+  //       this.$el.find('input').val('');
+  //       this.model.set(ourData);
+  //       this.model.save();
+  //
+  // },
 
   initialize:function(){
-
+    // if(!this.model){
+    //   this.model = new MemeModel();
+    // }
   },
 
   template: _.template(tmpl.formPage),

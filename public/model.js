@@ -14,15 +14,13 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: '/get-all-memes',
-  idAttribute: '_id',
+  urlRoot: '/create-memes',
+
   defaults: function() {
     return {
       topText: "generic top text",
       bottomText: "generic bottom text",
       imgURL: "generic url",
-      user: "generic author",
-      likes: 0
     };
   },
   initialize: function () {
