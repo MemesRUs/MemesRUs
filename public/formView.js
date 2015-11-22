@@ -41,7 +41,7 @@ module.exports = Backbone.View.extend({
   //       this.model.set(ourData);
   //       this.model.save();
   //
-  // },
+  },
 
   initialize:function(){
     // if(!this.model){
