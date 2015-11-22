@@ -17,6 +17,31 @@ module.exports = Backbone.View.extend({
 
   className:'container sampleMeme',
 
+  events:{
+    'click .formSubButton': 'newMeme',
+    'click .thumb': 'chosen',
+
+  },
+
+  chosen: function(e){
+    e.preventDefault();
+    this.$el.find('.thumb').removeClass('chosenOne');
+    $(e.target).addClass('chosenOne');
+  },
+
+
+  newMeme: function(e){
+    e.preventDefault();
+    // var ourData ={
+    //       imgURL: this.$el.find('.chosenOne').attr('src'),
+    //       topText: that.siblings('input[name="topText"]').val(),
+    //       bottomText: that.siblings('input[name="botText"]').val(),
+    //     };
+    // var newMeme = new MemeModel(ourData);
+    // newMeme.save();
+
+  },
+
   initialize:function(){
 
   },

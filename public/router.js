@@ -5,7 +5,8 @@ var FormView = require('./formView');
 var layoutView = require('./layoutView');
 var MemeCollection = require('./collection');
 var MemeCollectionView = require('./collectionView');
-
+var BlankCollection = require('./blankCollection');
+var BlankColView = require('./blankColView');
 
 module.exports = Backbone.Router.extend({
     routes: {
@@ -24,17 +25,22 @@ module.exports = Backbone.Router.extend({
     },
 
     homePage: function(){
-      
+
        new layoutView();
 
   },
 
     addMeme: function(){
-      console.log('we clicked this correctly');
-        $('article').html("");
-        var formView = new FormView();
+      var self =this;
+      $('article').html("");
+      var formView = new FormView();
+      var blankCollection = new BlankCollection();
+      blankCollection.fetch().then(function(){
         $('article').html(formView.render().el);
-      console.log('yay you made it!');
+        new BlankColView({collection: blankCollection});
+      });
+
+
     }
 
 

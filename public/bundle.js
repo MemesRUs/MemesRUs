@@ -3,6 +3,127 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
+var tmpl = require('./templates');
+var layoutView = require('./layoutView');
+var BlankView = require('./blankView');
+var BlankModel = require('./blankModel');
+var BlankCollection = require('./blankCollection');
+
+module.exports = Backbone.View.extend({
+  el: '.containImages',
+  events:{
+
+  },
+  initialize: function(){
+    this.addAll();
+  },
+  addOne:function(memeModel) {
+    var blankView = new BlankView({model: memeModel});
+    this.$el.append(blankView.render().el);
+  },
+  addAll: function(){
+    this.$el.html("");
+    var newcol = this.collection.toJSON();
+    _.each(newcol[0].content, this.addOne, this);
+  }
+
+});
+
+},{"./blankCollection":2,"./blankModel":3,"./blankView":4,"./layoutView":10,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],2:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+var BlankModel = require('./blankModel');
+var BankModelView = require('./blankView');
+
+module.exports = Backbone.Collection.extend({
+  url:'/get-blank-memes',
+  model: BlankModel,
+  initialize: function(){
+    console.log("blankMeme");
+  }
+});
+
+},{"./blankModel":3,"./blankView":4,"./collection":5,"./collectionView":6,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],3:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var MemeCollectionView = require('./collectionView');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+module.exports = Backbone.Model.extend({
+    urlRoot: '/get-blank-memes',
+    initialize:function(){
+      console.log("grabbing these memes!");
+    }
+});
+
+},{"./collection":5,"./collectionView":6,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],4:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+var blankModel = require('./blankModel');
+
+
+
+module.exports = Backbone.View.extend({
+  tagName: 'li',
+  className: 'col-md-4 eachimg',
+  template: _.template(tmpl.plainIMG),
+  initialize:function(){},
+
+  events: {
+
+  },
+
+  selectedMeme:function(){},
+
+  render:function(){
+    var markup = this.template(this.model);
+    this.$el.html(markup);
+    return this;
+  }
+
+
+
+
+
+
+
+});
+
+},{"./blankModel":3,"./collection":5,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],5:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
 var MemeModel = require('./model');
 
 module.exports = Backbone.Collection.extend({
@@ -13,7 +134,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./model":8,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
+},{"./model":12,"backbone":14,"jquery":15,"underscore":16}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -45,7 +166,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],3:[function(require,module,exports){
+},{"./collection":5,"./collectionView":6,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -84,7 +205,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
+},{"./collection":5,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -103,6 +224,31 @@ var layoutView = require('./layoutView');
 module.exports = Backbone.View.extend({
 
   className:'container sampleMeme',
+
+  events:{
+    'click .formSubButton': 'newMeme',
+    'click .thumb': 'chosen',
+
+  },
+
+  chosen: function(e){
+    e.preventDefault();
+    this.$el.find('.thumb').removeClass('chosenOne');
+    $(e.target).addClass('chosenOne');
+  },
+
+
+  newMeme: function(e){
+    e.preventDefault();
+    // var ourData ={
+    //       imgURL: this.$el.find('.chosenOne').attr('src'),
+    //       topText: that.siblings('input[name="topText"]').val(),
+    //       bottomText: that.siblings('input[name="botText"]').val(),
+    //     };
+    // var newMeme = new MemeModel(ourData);
+    // newMeme.save();
+
+  },
 
   initialize:function(){
 
@@ -172,7 +318,7 @@ module.exports = Backbone.View.extend({
 //     });
 // });
 
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],5:[function(require,module,exports){
+},{"./collection":5,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],9:[function(require,module,exports){
   var Backbone = require('backbone');
   var $ = require('jquery');
   Backbone.$ = $;
@@ -202,7 +348,7 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
-
+    console.log("clicked right");
     // this.$el.find('.login').addClass('hidden');
     //
     //
@@ -222,17 +368,18 @@ module.exports = Backbone.View.extend({
       data: {username:user, password:pass},
       success:function(){
         console.log("logged in");
-        $.ajax({
-          url:"/get-memes",
-          method:"GET",
-          success:function(data){
-
-          console.log( data);
-          },
-          failure:function(){
-            console.log("nope!");
-          }
-        });
+        window.location.hash = "#";
+        // $.ajax({
+        //   url:"/get-memes",
+        //   method:"GET",
+        //   success:function(data){
+        //
+        //   console.log( data);
+        //   },
+        //   failure:function(){
+        //     console.log("nope!");
+        //   }
+        // });
       },
       failure:function(){
         console.log("did not work");
@@ -242,7 +389,7 @@ module.exports = Backbone.View.extend({
 }
 });
 
-},{"./templates":14,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
+},{"./templates":18,"backbone":14,"jquery":15,"underscore":16}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -258,7 +405,6 @@ module.exports = Backbone.View.extend({
      var self = this;
      var headerHTML = new HeaderView();
      var memeCollection = new MemeCollection();
-     self.$el.find('header').html(headerHTML.render().el);
      memeCollection.fetch().then(function (){
        self.$el.find('header').html(headerHTML.render().el);
        new MemeCollectionView({collection: memeCollection});
@@ -266,7 +412,7 @@ module.exports = Backbone.View.extend({
    },
  });
 
-},{"./collection":1,"./collectionView":2,"./headerView":5,"backbone":10,"jquery":11,"underscore":12}],7:[function(require,module,exports){
+},{"./collection":5,"./collectionView":6,"./headerView":9,"backbone":14,"jquery":15,"underscore":16}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -293,7 +439,7 @@ $(function () {
 
 });
 
-},{"./layoutView":6,"./router":13,"backbone":10,"jquery":11,"underscore":12}],8:[function(require,module,exports){
+},{"./layoutView":10,"./router":17,"backbone":14,"jquery":15,"underscore":16}],12:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -326,7 +472,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":14,"backbone":10,"jquery":11,"underscore":12}],9:[function(require,module,exports){
+},{"./collection":5,"./collectionView":6,"./footerView":7,"./formView":8,"./headerView":9,"./layoutView":10,"./model":12,"./modelView":13,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -368,7 +514,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":14,"backbone":10,"jquery":11,"underscore":12}],10:[function(require,module,exports){
+},{"./templates":18,"backbone":14,"jquery":15,"underscore":16}],14:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -2266,7 +2412,7 @@ module.exports = Backbone.View.extend({
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":11,"underscore":12}],11:[function(require,module,exports){
+},{"jquery":15,"underscore":16}],15:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11478,7 +11624,7 @@ return jQuery;
 
 }));
 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13028,7 +13174,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
@@ -13036,7 +13182,8 @@ var FormView = require('./formView');
 var layoutView = require('./layoutView');
 var MemeCollection = require('./collection');
 var MemeCollectionView = require('./collectionView');
-
+var BlankCollection = require('./blankCollection');
+var BlankColView = require('./blankColView');
 
 module.exports = Backbone.Router.extend({
     routes: {
@@ -13055,17 +13202,22 @@ module.exports = Backbone.Router.extend({
     },
 
     homePage: function(){
-      
+
        new layoutView();
 
   },
 
     addMeme: function(){
-      console.log('we clicked this correctly');
-        $('article').html("");
-        var formView = new FormView();
+      var self =this;
+      $('article').html("");
+      var formView = new FormView();
+      var blankCollection = new BlankCollection();
+      blankCollection.fetch().then(function(){
         $('article').html(formView.render().el);
-      console.log('yay you made it!');
+        new BlankColView({collection: blankCollection});
+      });
+
+
     }
 
 
@@ -13073,7 +13225,7 @@ module.exports = Backbone.Router.extend({
 
 });
 
-},{"./collection":1,"./collectionView":2,"./formView":4,"./layoutView":6,"backbone":10,"jquery":11,"underscore":12}],14:[function(require,module,exports){
+},{"./blankColView":1,"./blankCollection":2,"./collection":5,"./collectionView":6,"./formView":8,"./layoutView":10,"backbone":14,"jquery":15,"underscore":16}],18:[function(require,module,exports){
 module.exports = {
 
     header:[
@@ -13112,7 +13264,7 @@ module.exports = {
 
     formPage:[
       '<div class="memeListing sampleList">',
-      '<a href="#">home</a>',
+      '<a href="">home</a>',
       '<div class="imgHolder" style="background-image:url()">',
       '<h4 class="topLayer"> topText</h4>',
       '<h4 class="bottomLayer"> bottomText</h4>',
@@ -13141,21 +13293,13 @@ module.exports = {
       '<button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>',
       '</div>',
       '</form>',
-      '<div class="upload">',
-      '<h4>or upload your own image</h4>',
-      '<form action="/upload" method="Post" enctype="multipart/form-data" class="uploadImg">',
-      '<label class="control-label">Select File</label>',
-      '<input id="input-1" type="file" class="file">',
-      '<button type="submit" class="newImgSubBut">Upload</button>',
-      '</form>',
-      '</div>',
       '</aside>'
     ].join(''),
 
     plainIMG:[
-      '<li class="col-md-4 eachimg">',
-      '<a href="#"><img class="thumb" src="<%=%>" alt=""></a>',
-      '</li>',
+
+      '<a href="#"><img class="thumb" src="<%=generatedName%>" alt=""></a>',
+
 
     ].join(''),
 
@@ -13171,4 +13315,4 @@ module.exports = {
 
 };
 
-},{}]},{},[7]);
+},{}]},{},[11]);

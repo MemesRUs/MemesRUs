@@ -27,7 +27,7 @@
   },
 
   signInHide: function(){
-
+    console.log("clicked right");
     // this.$el.find('.login').addClass('hidden');
     //
     //
@@ -47,17 +47,18 @@
       data: {username:user, password:pass},
       success:function(){
         console.log("logged in");
-        $.ajax({
-          url:"/get-memes",
-          method:"GET",
-          success:function(data){
-
-          console.log( data);
-          },
-          failure:function(){
-            console.log("nope!");
-          }
-        });
+        window.location.hash = "#";
+        // $.ajax({
+        //   url:"/get-memes",
+        //   method:"GET",
+        //   success:function(data){
+        //
+        //   console.log( data);
+        //   },
+        //   failure:function(){
+        //     console.log("nope!");
+        //   }
+        // });
       },
       failure:function(){
         console.log("did not work");
