@@ -7,6 +7,12 @@
 
 $testBorder:1px solid white;
 
+$headerFont: 'Permanent Marker', cursive;
+
+$mainDarkColor: #012837;
+$mainMedColor: #2D728D;
+$mainLightColor: #D0E4EC;
+
 /*---*/
 
 
@@ -30,50 +36,48 @@ body {
 
 header {
   border-bottom: 3px solid white;
-  background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
-  height: 300px;
+  background-color: $mainDarkColor;
+  height: 100px;
 }
+
 .title {
-  color: darkcyan;
-  position: absolute;
+  color: $mainMedColor;
+  display: inline-block;
+  font-family: $headerFont;
+  font-size: 4.5em;
   margin-left: 5%;
-  margin-top: 7%;
-}
-header:hover {
-  .title {
-    transform: rotate(-30deg);
-    transition: ease-in 0.7s;
+  margin-top: 10px;
+  transition: all ease-in-out 0.7s;
+  &:hover {
+    transform: scale(1.1);
   }
 }
+
 .login {
-  background-color: aqua;
-  height: 257px;
-  width: 30%;
-  margin: auto;
+  display: inline-block;
+  background-color: $mainMedColor;
+  width: auto;
   border-radius: 5%;
-  opacity: 0.3;
+  opacity: 0.5;
+  float: right;
 }
+
+.title, .login {
+  vertical-align: middle;
+}
+
 .loginInput {
-  display: inherit;
-  height: 40px;
-  width: 140%;
-  margin-top: 7%;
-  font-size: 22px;
+  display: inline-block;
+  margin: 5px;
 }
+
 .inputForm{
-  margin-left: 39%;
-  position: absolute;
-  margin-top: -14.5%;
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
 .loginButton {
-  height: 40px;
-  width: 135%;
-  margin-top: 5%;
-  font-size: 23px;
-  font-family: fantasy;
+  margin: 5px;
   text-shadow: 2px 2px 2px white;
-  margin-left: 2%;
 }
 
 .hidden {
@@ -116,7 +120,7 @@ header:hover {
 
   // INDIVIDUAL LISTING
 .memeListing {
-  background-color: #D0E4EC;
+  background-color: $mainLightColor;
   border-radius: 3%;
   float: left;
   margin: 20px 0;
@@ -157,7 +161,7 @@ header:hover {
   font-size: 2em;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   position: relative;
-  top: 65%;
+  top: 45%;
 }
 
   // LIKES/AUTHOR
