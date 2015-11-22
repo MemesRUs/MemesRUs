@@ -37,9 +37,9 @@ module.exports = {
 
     formPage:[
       '<div class="memeListing sampleList">',
-      '<div class="imgHolder" style="background-image:url()">',
-      '<h4 class="topLayer"> topText</h4>',
-      '<h4 class="bottomLayer"> bottomText</h4>',
+      '<div class="imgHolder" id="prevImg">',
+      '<h4 class="topLayer" id="topTexts"> topText</h4>',
+      '<h4 class="bottomLayer" id="bottomTexts"> bottomText</h4>',
       '</div>',
       '<ul class="memeUL">',
       '<li> <img class="iconHeart" src="heart.svg"/> <span id="likeCount"></span> </li>',

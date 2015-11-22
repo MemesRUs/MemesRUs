@@ -20,8 +20,20 @@ module.exports = Backbone.View.extend({
   events:{
     'click .formSubButton': 'newMeme',
     'click .thumb': 'chosen',
+    'click .previewMeme': 'preview',
 
   },
+
+  preview: function(e){
+    e.preventDefault();
+    var prevIMG = this.$el.find('.chosenOne').attr('src');
+    this.$el.find('#prevImg').css('background-image','url("'+this.$el.find('.chosenOne').attr('src')+'")');
+    this.$el.find('#topTexts').html(this.$el.find('input[name="topText"]').val());
+    this.$el.find('#bottomTexts').html(this.$el.find('input[name="botText"]').val());
+
+
+  },
+
 
   chosen: function(e){
     e.preventDefault();
@@ -32,21 +44,22 @@ module.exports = Backbone.View.extend({
 
   newMeme: function(e){
     e.preventDefault();
-  //   var ourData ={
-  //         imgURL: this.$el.find('.chosenOne').attr('src'),
-  //         topText: this.$el.find('input[name="topText"]').val(),
-  //         bottomText: this.$el.find('input[name="botText"]').val(),
-  //       };
-  //       this.$el.find('input').val('');
-  //       this.model.set(ourData);
-  //       this.model.save();
-  //
-  // },
+    var ourData ={
+          originalName: this.$el.find('.chosenOne').attr('src'),
+          topText: this.$el.find('input[name="topText"]').val(),
+          bottomText: this.$el.find('input[name="botText"]').val(),
+          popularityRating: 0,
+        };
+        this.$el.find('input').val('');
+        this.model.set(ourData);
+        this.model.save();
+
+  },
 
   initialize:function(){
-    // if(!this.model){
-    //   this.model = new MemeModel();
-    // }
+    if(!this.model){
+      this.model = new MemeModel();
+    }
   },
 
   template: _.template(tmpl.formPage),
@@ -60,55 +73,3 @@ module.exports = Backbone.View.extend({
 
 
 });
-
-
-//
-//  this is incase we need to upload info to tiny tiny for testing use
-
-
-// <div class="formContainer">
-//     <div class="formSampleImg">
-//
-//         <form action="" class="formGenerate">
-//           <div class="col-md 8">
-//             <img class="formImage" src="http://brammoforum.com/index.php?action=media;sa=media;in=349;preview" alt="">
-//             <input type="text" name="topText" class="formTopText" placeholder="top text">
-//             <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
-//             <input type="submit" class="formSubButton" value="Submit" name="Submit">
-//           </div>
-//
-//
-//
-//
-//         </form>
-//     </div>
-//
-// </div>
-
-// this is the ajax call to post the above information form to tiny tiny for testing
-
-
-// $('body').on('click','.formSubButton', function(e){
-//     e.preventDefault();
-//     console.log("we did it");
-//     var that=$(this);
-//     console.log(that);
-//     var ourData ={
-//       imgURL: that.siblings('img').attr('src'),
-//       topText: that.siblings('input[name="topText"]').val(),
-//       bottomText: that.siblings('input[name="botText"]').val(),
-//       likes:1,
-//       user:"superman",
-//     };
-//     $.ajax({
-//       url:"https://tiny-tiny.herokuapp.com/collections/memeordeath",
-//       method:"POST",
-//       data: ourData,
-//       success:function(data){
-//         console.log("we did it!");
-//       },
-//       failure:function(){
-//         console.log("not so much");
-//       }
-//     });
-// });
