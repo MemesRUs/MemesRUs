@@ -23,7 +23,7 @@
 //
 // USERS MEMES:      /get-memes
 //
-// UPLOAD NEW MEME:  /creatememes
+// UPLOAD NEW MEME:  /create-memes
 //
 // GET-ALL-MEMES:    /get-all-memes
 //
