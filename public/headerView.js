@@ -6,12 +6,12 @@
 
   module.exports = Backbone.View.extend({
   initialize: function () {
-
+    var loggedIn = false;
   },
   template: _.template(tmpl.header),
   events: {
-    'click #but1': 'signInHide',
-    'click #but2': 'continueLogin'
+    'click #but1': 'signInHide'
+    // 'click #homeTest': 'homeRedirect'
   },
   render: function () {
     var markup = this.template({});
@@ -28,9 +28,12 @@
       method:"POST",
       data: {username:user, password:pass},
       success:function(){
-        console.log("logged in");
+        loggedIn = true;
+        $('.inputForm').addClass('hidden');
+        $('.login').css('margin-top','1%');
+        $('.headerNav').removeClass('hidden');
         $.ajax({
-          url:"/get-memes",
+          url:"/get-all-memes",
           method:"GET",
           success:function(data){
             console.log(data);
@@ -45,8 +48,16 @@
       }
     });
     console.log(that);
-},
-continueLogin: function () {
-
 }
+// homeRedirect: function() {
+//   if(loggedIn === true) {
+//     console.log("you're logged in");
+//     $('.articleMemes').html(
+//     memeCollection.fetch().then(function (){
+//       new MemeCollectionView({collection: memeCollection});
+//     }));
+//   } else {
+//     console.log("you're not logged in");
+//   }
+//  }
 });

@@ -169,12 +169,12 @@ module.exports = Backbone.View.extend({
 
   module.exports = Backbone.View.extend({
   initialize: function () {
-
+    var loggedIn = false;
   },
   template: _.template(tmpl.header),
   events: {
-    'click #but1': 'signInHide',
-    'click #but2': 'continueLogin'
+    'click #but1': 'signInHide'
+    // 'click #homeTest': 'homeRedirect'
   },
   render: function () {
     var markup = this.template({});
@@ -191,9 +191,12 @@ module.exports = Backbone.View.extend({
       method:"POST",
       data: {username:user, password:pass},
       success:function(){
-        console.log("logged in");
+        loggedIn = true;
+        $('.inputForm').addClass('hidden');
+        $('.login').css('margin-top','1%');
+        $('.headerNav').removeClass('hidden');
         $.ajax({
-          url:"/get-memes",
+          url:"/get-all-memes",
           method:"GET",
           success:function(data){
             console.log(data);
@@ -208,10 +211,18 @@ module.exports = Backbone.View.extend({
       }
     });
     console.log(that);
-},
-continueLogin: function () {
-
 }
+// homeRedirect: function() {
+//   if(loggedIn === true) {
+//     console.log("you're logged in");
+//     $('.articleMemes').html(
+//     memeCollection.fetch().then(function (){
+//       new MemeCollectionView({collection: memeCollection});
+//     }));
+//   } else {
+//     console.log("you're not logged in");
+//   }
+//  }
 });
 
 },{"./templates":14,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
@@ -232,10 +243,9 @@ module.exports = Backbone.View.extend({
      var headerHTML = new HeaderView();
      var footerHTML = new FooterView();
      var memeCollection = new MemeCollection();
-     self.$el.find('header').html(headerHTML.render().el);
      memeCollection.fetch().then(function (){
-       new MemeCollectionView({collection: memeCollection});
        self.$el.find('header').html(headerHTML.render().el);
+       new MemeCollectionView({collection: memeCollection});
        self.$el.find('footer').html(footerHTML.render().el);
      });
    },
@@ -285,7 +295,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: '/get-memes',
+  urlRoot: '/get-all-memes',
   idAttribute: '_id',
   defaults: function() {
     return {
@@ -327,10 +337,7 @@ module.exports = Backbone.View.extend({
     console.log(this);
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
-    // this.model.save();
     this.$el.find('#likeCount').html(currLikes+1);
-    this.model.set({topText: "how many characters will fit in here? how many? how many? more? more?"});
-    this.model.set({bottomText: "how many characters will fit in here? how many? how many? more? more?"});
     this.model.save();
   },
   initialize: function () {
@@ -13053,7 +13060,7 @@ module.exports = {
 
     header:[
 
-             "<h1 class='title'> Meme or Die!!?...</h1>",
+             "<h1 class='title'> Meme or Die</h1>",
              "<div class='login'>",
              "<form class='inputForm'>",
              "<input type='text' placeholder='username' name='username' class='loginInput'>",
@@ -13061,8 +13068,12 @@ module.exports = {
              "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
              "<button type='button' name='button' id='but2' class='loginButton'>continue as guest</button>",
              "</form>",
-             "<img class='hidden headerIcon' src='icons/home.svg'/>",
-             "<img class='hidden headerIcon' src='icons/plus.svg'/>",
+             "<ul class='headerNav hidden'>",
+             "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
+             "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
+             "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
+             "<li><a href='#'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "</ul>",
              "</div>"
 
 
@@ -13140,7 +13151,7 @@ module.exports = {
       '<li><img class="footerIcon" src="icons/twitter-with-circle.svg"/></li>',
       '<li><img class="footerIcon" src="icons/pinterest-with-circle.svg"/></li>',
       '</ul>',
-      '&copy; Memes or Death Co. 2015<br>',
+      '&copy; Meme or Die 2015<br>',
       '<a href="http://www.entypo.com">Entypo</a> pictograms by Daniel Bruce<br>',
     ].join('')
 

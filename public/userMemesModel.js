@@ -14,7 +14,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: '/get-all-memes',
+  urlRoot: '/get-memes',
   idAttribute: '_id',
   defaults: function() {
     return {
@@ -26,6 +26,6 @@ module.exports = Backbone.Model.extend({
     };
   },
   initialize: function () {
-    console.log("meme models being created...");
+    console.log("user's meme models being created...");
   }
 });

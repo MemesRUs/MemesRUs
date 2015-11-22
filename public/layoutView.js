@@ -15,10 +15,9 @@ module.exports = Backbone.View.extend({
      var headerHTML = new HeaderView();
      var footerHTML = new FooterView();
      var memeCollection = new MemeCollection();
-     self.$el.find('header').html(headerHTML.render().el);
      memeCollection.fetch().then(function (){
-       new MemeCollectionView({collection: memeCollection});
        self.$el.find('header').html(headerHTML.render().el);
+       new MemeCollectionView({collection: memeCollection});
        self.$el.find('footer').html(footerHTML.render().el);
      });
    },
