@@ -1,11 +1,14 @@
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
+  var Backbone = require('backbone');
+  var $ = require('jquery');
+  Backbone.$ = $;
+  var _ = require('underscore');
+  var tmpl = require('./templates');
 
-module.exports = Backbone.View.extend({
-  //  el: '.login',
+  module.exports = Backbone.View.extend({
+    //  el: '.login',
+
+
+
   initialize: function () {
     console.log('HELLOOOO');
   },
@@ -23,7 +26,10 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
-    this.$el.addClass('hidden');
+    this.$el.find('.login').addClass('hidden');
+
+
     console.log(this);
+
   }
 });

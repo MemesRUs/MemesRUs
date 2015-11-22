@@ -14,9 +14,12 @@
 *****************************************/
 /*---*/
 header {
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid black;
   background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
   height: 300px; }
+
+.newHeader {
+  background: black; }
 
 .title {
   color: darkcyan;
@@ -60,6 +63,16 @@ header:hover .title {
 
 .hidden {
   display: none; }
+
+.divIcon1 {
+  margin-left: 88%;
+  margin-top: 2%;
+  height: 47px; }
+
+.divIcon2 {
+  margin-left: 93%;
+  margin-top: -4%;
+  height: 47px; }
 
 /*---*/
 /*****************************************
@@ -136,5 +149,34 @@ header:hover .title {
                 FOOTER
 *****************************************/
 /*---*/
-/*PUT CODE IN HERE*/
+footer {
+  border-top: 3px solid black;
+  background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
+  height: 110px; }
+
+.footerBut {
+  height: 40px;
+  width: 100%;
+  font-size: 25px;
+  margin-top: 8%; }
+
+.footerDiv1 {
+  height: 0px;
+  width: 3%;
+  background: #FFDB96;
+  display: inline-block;
+  margin-left: 77%;
+  margin-top: 20px; }
+
+.footerDiv2 {
+  height: 0px;
+  width: 3%;
+  background: #FFDB96;
+  display: inline-block;
+  margin-left: 3%;
+  margin-top: 20px; }
+
+.divIcon {
+  height: 47px; }
+
 /*---*/

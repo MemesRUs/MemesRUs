@@ -3,15 +3,6 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var _ = require('underscore');
-<<<<<<< HEAD
-=======
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var MemeCollectionView = require('./collectionView');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var MemeModel = require('./model');
 
 module.exports = Backbone.Collection.extend({
@@ -22,11 +13,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-<<<<<<< HEAD
 },{"./model":8,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
-=======
-},{"./collection":1,"./collectionView":2,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],2:[function(require,module,exports){
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -71,38 +58,9 @@ var MemeModel = require('./model');
 var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"dup":3,"jquery":11,"underscore":12}],5:[function(require,module,exports){
-<<<<<<< HEAD
-=======
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
-var MemeCollection = require('./collection');
-var HeaderView = require('./headerView');
-var FooterView = require('./footerView');
-var FormView = require('./formView');
-var MemeModel = require('./model');
-var MemeView = require('./modelView');
-var layoutView = require('./layoutView');
-
-// login
-
-},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
-
-},{}],7:[function(require,module,exports){
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
-
 module.exports = Backbone.View.extend({
-  //  el: '.login',
+  // footer navigation
+
   initialize: function () {
     console.log('HELLOOOO');
   },
@@ -120,8 +78,59 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
-    this.$el.addClass('hidden');
+    this.$el.find('.login').addClass('hidden');
     console.log(this);
+  }
+});
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],4:[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery');
+Backbone.$ = $;
+var _ = require('underscore');
+var tmpl = require('./templates');
+var MemeCollection = require('./collection');
+var HeaderView = require('./headerView');
+var FooterView = require('./footerView');
+var FormView = require('./formView');
+var MemeModel = require('./model');
+var MemeView = require('./modelView');
+var layoutView = require('./layoutView');
+
+},{"./collection":1,"./footerView":3,"./formView":4,"./headerView":5,"./layoutView":6,"./model":8,"./modelView":9,"./templates":13,"backbone":10,"jquery":11,"underscore":12}],5:[function(require,module,exports){
+  var Backbone = require('backbone');
+  var $ = require('jquery');
+  Backbone.$ = $;
+  var _ = require('underscore');
+  var tmpl = require('./templates');
+
+  module.exports = Backbone.View.extend({
+    //  el: '.login',
+
+
+
+  initialize: function () {
+    console.log('HELLOOOO');
+  },
+
+  template: _.template(tmpl.header),
+
+  events: {
+    'click #but1': 'signInHide'
+  },
+
+  render: function () {
+    var markup = this.template({});
+    this.$el.html(markup);
+    return this;
+  },
+
+  signInHide: function(){
+    this.$el.find('.login').addClass('hidden');
+
+
+    console.log(this);
+
   }
 });
 
@@ -165,11 +174,6 @@ var layoutView = require('./layoutView');
 
 
 $(function () {
-<<<<<<< HEAD
-=======
-
-  var memes = new MemeCollection();
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
 
   // var memes = new MemeCollection();
   //
@@ -12915,8 +12919,8 @@ module.exports = {
 
     header:[
 
-<<<<<<< HEAD
-             "<h1 class='title'> Meme or NAh!?...</h1>",
+             "<h1 class='title'> Meme or Die!!?...</h1>",
+             "<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
              "<div class='login'>",
              "</div>",
              "<form class='inputForm'>",
@@ -12924,18 +12928,10 @@ module.exports = {
              "<input type='text' placeholder='password' name='password' class='loginInput'>",
              "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
              "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-             "</form>"
-=======
-            // <h1 class="title"> Meme or NAh!?...</h1>
-            // <div class="login">
-            // </div>
-            // <form class='inputForm'>
-            // <input type='text' placeholder='username' name='username' class="loginInput">
-            // <input type='text' placeholder='password' name='password' class="loginInput">
-            // <button type="button" name="button">login</button class='loginButton'>
-            // <button type="button" name="button">continue as guest</button class='loginButton'>
-            // </form>
->>>>>>> 922744ac462d80a7c3bb5740f8b3e35bae6219e5
+             "</form>",
+
+             "<div class='headerDiv'> <img src='icons/home.jpg' class='divIcon1'/></div>",
+             "<div class='headerDiv'><img src='icons/add64.png'/ class='divIcon2'> </div>"
 
     ].join(''),
 
@@ -12962,6 +12958,7 @@ module.exports = {
 
 
     footer:[
+
 
     ].join('')
 
