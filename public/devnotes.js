@@ -10,14 +10,24 @@
 // CHARACTER LIMITS: 65 ON BOTH TOP AND BOTTOM
 
 //ROUTES MADE:
+//
+// HOME : /#
 
-//LOG IN ROUTE :    /login
+//FORM:/#addMeme
 
-//LOG OUT:    /logout
+//test for memes url: https://tiny-tiny.herokuapp.com/collections/memeordeath
 
-// plain image:
-
-// memed up image:
+//LOG IN ROUTE :     /login
+//
+// LOG OUT:          /logout
+//
+// USERS MEMES:      /get-memes
+//
+// UPLOAD NEW MEME:  /create-memes
+//
+// GET-ALL-MEMES:    /get-all-memes
+//
+//
 
 
 //

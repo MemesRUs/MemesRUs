@@ -139,9 +139,92 @@ header {
 
 /*---*/
 /*****************************************
-                ASIDE
+                FORM PAGE
 *****************************************/
+.sampleMeme {
+  background-color: blue; }
+
+.ourMeme {
+  background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: 50%;
+  height: 450px;
+  overflow: hidden;
+  text-align: center; }
+
+.createAMeme {
+  background-color: red; }
+
+.sampleimages {
+  background-color: orange; }
+
+.newMemeForm {
+  background-color: purple; }
+
+.thumb {
+  width: 100%; }
+
+.containImages {
+  list-style: none; }
+
+.eachimg {
+  margin: 15px 0px;
+  list-style: none; }
+
+.uploadImg {
+  clear: both; }
+
+#input-1 {
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px; }
+
+.newImgSubBut {
+  clear: both;
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px; }
+
 /*---*/
+.formSampleImg {
+  width: 450px;
+  padding: 15px; }
+
+.formImage {
+  width: 350px;
+  display: block;
+  margin: 0 auto; }
+
+.formTopText {
+  width: 80%;
+  display: block;
+  margin: 30px auto; }
+
+.formBottomText {
+  width: 80%;
+  display: block;
+  margin: 30px auto; }
+
+.formbutton button {
+  margin: 0 50px; }
+
+.formSubButton {
+  width: 230px; }
+
+.previewMeme {
+  float: right; }
+
+.formGenerate {
+  padding: 30px 15px;
+  margin: 10px auto;
+  border: 1px solid white; }
+
+.sampleList {
+  float: none;
+  margin: 20px auto; }
+
 /*PUT CODE IN HERE*/
 /*---*/
 /*****************************************

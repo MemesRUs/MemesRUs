@@ -14,7 +14,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
+  urlRoot: '/get-memes',
   idAttribute: '_id',
   defaults: function() {
     return {
