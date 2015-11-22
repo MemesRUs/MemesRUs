@@ -190,7 +190,7 @@ public class MemeController {
                     )throws Exception{
         String username = (String) session.getAttribute("username");
         if (username == null){
-            throw new Exception ("Not logged in HOMIE!");
+            //throw new Exception ("Not logged in HOMIE!");
         }
         PageRequest pageRequest = new PageRequest(page, 6);
         User user = users.findOneByUsername(username);
