@@ -55,7 +55,7 @@ public class MemeController {
         memeFileTwo.topText = topText;
         memeFileTwo.bottomText = bottomText;
         memeFileTwo.popularityRating = popularityRating;
-        memeFileTwo.originalName = "blank memes/bad-luck-brian meme.png";
+        memeFileTwo.originalName = "blank memes/bad-luck-brian meme.jpg";
         memeFileTwo.generatedName = memeFileTwo.originalName;
         memes.save(memeFileTwo);
 
@@ -63,7 +63,7 @@ public class MemeController {
         memeFileThree.topText = topText;
         memeFileThree.bottomText = bottomText;
         memeFileThree.popularityRating = popularityRating;
-        memeFileThree.originalName = "blank memes/family meme.jpg";
+        memeFileThree.originalName = "blank meme/family meme.jpg";
         memeFileThree.generatedName = memeFileThree.originalName;
         memes.save(memeFileThree);
 
@@ -71,7 +71,7 @@ public class MemeController {
         memeFileFour.topText = topText;
         memeFileFour.bottomText = bottomText;
         memeFileFour.popularityRating = popularityRating;
-        memeFileFour.originalName = "blank memes/fat fuck meme.jpg";
+        memeFileFour.originalName = "blank meme/fat fuck meme.jpg";
         memeFileFour.generatedName = memeFileFour.originalName;
         memes.save(memeFileFour);
 
@@ -79,7 +79,7 @@ public class MemeController {
         memeFileFive.topText = topText;
         memeFileFive.bottomText = bottomText;
         memeFileFive.popularityRating = popularityRating;
-        memeFileFive.originalName = "blank memes/Futurama-Fry meme.jpg";
+        memeFileFive.originalName = "blank meme/Futurama-Fry meme.jpg";
         memeFileFive.generatedName = memeFileFive.originalName;
         memes.save(memeFileFive);
 
@@ -87,7 +87,7 @@ public class MemeController {
         memeFileSix.topText = topText;
         memeFileSix.bottomText = bottomText;
         memeFileSix.popularityRating = popularityRating;
-        memeFileSix.originalName = "blank memes/game of thrones meme.jpg";
+        memeFileSix.originalName = "blank meme/game of thrones meme.jpg";
         memeFileSix.generatedName = memeFileSix.originalName;
         memes.save(memeFileSix);
 
@@ -95,7 +95,7 @@ public class MemeController {
         memeFileSeven.topText = topText;
         memeFileSeven.bottomText = bottomText;
         memeFileSeven.popularityRating = popularityRating;
-        memeFileSeven.originalName = "blank memes/gangster kid meme.jpg";
+        memeFileSeven.originalName = "blank meme/gangster kid meme.jpg";
         memeFileSeven.generatedName = memeFileSeven.originalName;
         memes.save(memeFileSeven);
 
@@ -103,7 +103,7 @@ public class MemeController {
         memeFileEight.topText = topText;
         memeFileEight.bottomText = bottomText;
         memeFileEight.popularityRating = popularityRating;
-        memeFileEight.originalName = "blank memes/little girl meme.png";
+        memeFileEight.originalName = "blank meme/little girl meme.jpg";
         memeFileEight.generatedName = memeFileEight.originalName;
         memes.save(memeFileEight);
 
@@ -111,7 +111,7 @@ public class MemeController {
         memeFileNine.topText = topText;
         memeFileNine.bottomText = bottomText;
         memeFileNine.popularityRating = popularityRating;
-        memeFileNine.originalName = "blank memes/southpark meme.jpg";
+        memeFileNine.originalName = "blank meme/southpark meme.jpg";
         memeFileNine.generatedName = memeFileNine.originalName;
         memes.save(memeFileNine);
 
@@ -119,7 +119,7 @@ public class MemeController {
         memeFileTen.topText = topText;
         memeFileTen.bottomText = bottomText;
         memeFileTen.popularityRating = popularityRating;
-        memeFileTen.originalName = "blank memes/star trek meme.jpg";
+        memeFileTen.originalName = "blank meme/star trek meme.jpg";
         memeFileTen.generatedName = memeFileTen.originalName;
         memes.save(memeFileTen);
     }
