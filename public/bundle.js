@@ -70,13 +70,14 @@ var tmpl = require('./templates');
 module.exports = Backbone.View.extend({
   //  el: '.login',
   initialize: function () {
-    console.log('HELLOOOO');
+
   },
 
   template: _.template(tmpl.header),
 
   events: {
-    'click #but1': 'signInHide'
+    'click #but1': 'signInHide',
+    'click .loginButton': 'continueLogin'
   },
 
   render: function () {
@@ -86,9 +87,37 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
-    this.$el.addClass('hidden');
-    console.log(this);
-  }
+   // this.$el.addClass('hidden');
+     var that = $('#but1');
+     var user = that.siblings('input[name="username"]').val();
+     var pass = that.siblings('input[name="password"]').val();
+
+   $.ajax({
+     url:"/login",
+     method:"POST",
+     data: {username:user, password:pass},
+     success:function(){
+       console.log("logged in");
+       $.ajax({
+         url:"/get-memes",
+         method:"GET",
+         success:function(data){
+           console.log("we did it" + data);
+         },
+         failure:function(){
+           console.log("nope!");
+         }
+       });
+     },
+     failure:function(){
+       console.log("did not work");
+     }
+   });
+   console.log(that);
+ },
+ continueLogin: function () {
+   $('header').css('height:100px;');
+ }
 });
 
 },{"./templates":13,"backbone":10,"jquery":11,"underscore":12}],6:[function(require,module,exports){
@@ -194,8 +223,11 @@ module.exports = Backbone.View.extend({
     console.log(this);
     var currLikes = this.model.attributes.likes;
     this.model.set({likes: currLikes+1});
-    this.model.save();
+    // this.model.save();
     this.$el.find('#likeCount').html(currLikes+1);
+    this.model.set({topText: "how many characters will fit in here? how many? how many? more? more?"});
+    this.model.set({bottomText: "how many characters will fit in here? how many? how many? more? more?"});
+    this.model.save();
   },
   initialize: function () {
 
@@ -12872,15 +12904,15 @@ module.exports = {
 
     header:[
 
-      "<h1 class='title'> Meme or NAh!?...</h1>",
+      "<h1 class='title'> Meme or Death</h1>",
       "<div class='login'>",
-      "</div>",
       "<form class='inputForm'>",
       "<input type='text' placeholder='username' name='username' class='loginInput'>",
-      "<input type='text' placeholder='password' name='password' class='loginInput'>",
+      "<input type='password' placeholder='password' name='password' class='loginInput'>",
       "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
       "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-      "</form>"
+      "</form>",
+      "</div>"
 
     ].join(''),
 
