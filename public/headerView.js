@@ -19,6 +19,7 @@
     return this;
   },
   signInHide: function(){
+
       var that = $('#but1');
       var user = that.siblings('input[name="username"]').val();
       var pass = that.siblings('input[name="password"]').val();

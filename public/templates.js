@@ -37,7 +37,6 @@ module.exports = {
 
     formPage:[
       '<div class="memeListing sampleList">',
-      '<a href="#">home</a>',
       '<div class="imgHolder" style="background-image:url()">',
       '<h4 class="topLayer"> topText</h4>',
       '<h4 class="bottomLayer"> bottomText</h4>',
@@ -66,21 +65,13 @@ module.exports = {
       '<button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>',
       '</div>',
       '</form>',
-      '<div class="upload">',
-      '<h4>or upload your own image</h4>',
-      '<form action="/upload" method="Post" enctype="multipart/form-data" class="uploadImg">',
-      '<label class="control-label">Select File</label>',
-      '<input id="input-1" type="file" class="file">',
-      '<button type="submit" class="newImgSubBut">Upload</button>',
-      '</form>',
-      '</div>',
       '</aside>'
     ].join(''),
 
     plainIMG:[
-      '<li class="col-md-4 eachimg">',
-      '<a href="#"><img class="thumb" src="<%=%>" alt=""></a>',
-      '</li>',
+
+      '<a href="#"><img class="thumb" src="<%=generatedName%>" alt=""></a>',
+
 
     ].join(''),
 
