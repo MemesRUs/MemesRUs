@@ -146,25 +146,22 @@ public class MemeController {
     @RequestMapping("/create-memes")
     public Page<Meme> createMemes(
                             HttpSession session,
-                            MultipartFile file,
                             String topText,
                             String bottomText,
                             int popularityRating,
+                            String originalName,
                             @RequestParam(defaultValue = "0") int page
                             )throws Exception{
         String username = (String) session.getAttribute("username");
         if (username == null){
         throw new Exception("You can't upload brah!");
         }
-        File f = File.createTempFile("file", file.getOriginalFilename(), new File ("public"));
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(file.getBytes());
 
         PageRequest pageRequest = new PageRequest(page, 6);
         User user = users.findOneByUsername(username);
         Meme memeFile = new Meme();
-        memeFile.originalName = file.getOriginalFilename();
-        memeFile.generatedName = f.getName();
+        memeFile.originalName = originalName;
+        memeFile.generatedName = originalName;
         memeFile.topText = topText;
         memeFile.bottomText = bottomText;
         memeFile.popularityRating = popularityRating;
