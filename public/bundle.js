@@ -127,17 +127,45 @@ var MemeModel = require('./model');
 var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
 
+module.exports = Backbone.View.extend({
+  // footer navigation
+
+  initialize: function () {
+    console.log('HELLOOOO');
+  },
+
+  template: _.template(tmpl.header),
+
+  events: {
+    'click #but1': 'signInHide'
+  },
+
+  render: function () {
+    var markup = this.template({});
+    this.$el.html(markup);
+    return this;
+  },
+
+  signInHide: function(){
+    this.$el.find('.login').addClass('hidden');
+    console.log(this);
+  }
+});
+
 },{"./collection":2,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"jquery":12,"underscore":13}],5:[function(require,module,exports){
 arguments[4][1][0].apply(exports,arguments)
 },{"./collection":2,"./footerView":4,"./formView":5,"./headerView":6,"./layoutView":7,"./model":9,"./modelView":10,"./templates":15,"backbone":11,"dup":1,"jquery":12,"underscore":13}],6:[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery');
-Backbone.$ = $;
-var _ = require('underscore');
-var tmpl = require('./templates');
+  var Backbone = require('backbone');
+  var $ = require('jquery');
+  Backbone.$ = $;
+  var _ = require('underscore');
+  var tmpl = require('./templates');
 
-module.exports = Backbone.View.extend({
-  //  el: '.login',
+  module.exports = Backbone.View.extend({
+    //  el: '.login',
+
+
+
   initialize: function () {
 
   },
@@ -156,6 +184,13 @@ module.exports = Backbone.View.extend({
   },
 
   signInHide: function(){
+
+    // this.$el.find('.login').addClass('hidden');
+    //
+    //
+    // console.log(this);
+
+
 
     // this.$el.addClass('hidden');
       var that = $('#but1');
@@ -186,7 +221,7 @@ module.exports = Backbone.View.extend({
       }
     });
     console.log(that);
-  }
+}
 });
 
 },{"./templates":15,"backbone":11,"jquery":12,"underscore":13}],7:[function(require,module,exports){
@@ -231,55 +266,6 @@ var Router = require('./router');
 
 $(function () {
 
-  // event:{
-  //   $('body').on('click','.loginButton', function(e){
-  //     e.preventDefault();
-  //     console.log("clicked");
-  //     var Ourdata = {
-  //       user:$(this).sibglings('input[name="username"]').val(),
-  //       pass:$(this).sibglings('input[name="password"]').val(),
-  //     };
-  //     $.ajax({
-  //       url:"/login",
-  //       method:"POST",
-  //       data:{usernamd: user, password: pass},
-  //       success:function(){
-  //         console.log("logged in");
-  //         $.ajax({
-  //           url:"/upload",
-  //           method:"GET",
-  //           success:function(data){
-  //             console.log("we did it"+ data);
-  //           },
-  //           failure:function(){
-  //             console.log("nope!");
-  //           }
-  //         });
-  //       },
-  //       failure:function(){
-  //         console.log("did not work");
-  //       }
-  //     });
-  //   });
-  // }
-
-  // $.ajax({
-  //   url:"/upload",
-  //   method:"GET",
-  //   success:function(data){
-  //     console.log("we did it"+ data);
-  //   },
-  //   failure:function(){
-  //     console.log("nope!");
-  //   }
-  // });
-
-
-  // var memes = new MemeCollection();
-  //
-  // memes.fetch().then(function (data) {
-  //   var memeView = new MemeCollectionView({collection: memes});
-  // });
    new layoutView();
    new Router();
    Backbone.history.start();
@@ -303,7 +289,7 @@ var layoutView = require('./layoutView');
 
 
 module.exports = Backbone.Model.extend({
-  urlRoot: '/getmemes',
+  urlRoot: '/get-memes',
   idAttribute: '_id',
   defaults: function() {
     return {
@@ -13059,15 +13045,21 @@ module.exports = {
 
     header:[
 
-      "<h1 class='title'> Meme or Death</h1>",
-      "<div class='login'>",
-      "<form class='inputForm'>",
-      "<input type='text' placeholder='username' name='username' class='loginInput'>",
-      "<input type='password' placeholder='password' name='password' class='loginInput'>",
-      "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-      "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-      "</form>",
-      "</div>"
+
+             "<h1 class='title'> Meme or Die!!?...</h1>",
+             //"<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
+             "<div class='login'>",
+             "</div>",
+             "<form class='inputForm'>",
+             "<input type='text' placeholder='username' name='username' class='loginInput'>",
+             "<input type='text' placeholder='password' name='password' class='loginInput'>",
+             "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
+             "<button type='button' name='button' class='loginButton'>continue as guest</button>",
+             "</form>",
+
+             "<div class='headerDiv'> <img src='icons/home.jpg' class='divIcon1'/></div>",
+             "<div class='headerDiv'><img src='icons/add64.png'/ class='divIcon2'> </div>"
+
 
     ].join(''),
 
@@ -13138,6 +13130,7 @@ module.exports = {
 
 
     footer:[
+
 
     ].join('')
 
