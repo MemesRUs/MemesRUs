@@ -37,7 +37,6 @@ module.exports = {
 
     formPage:[
       '<div class="memeListing sampleList">',
-      '<a href="">home</a>',
       '<div class="imgHolder" style="background-image:url()">',
       '<h4 class="topLayer"> topText</h4>',
       '<h4 class="bottomLayer"> bottomText</h4>',
