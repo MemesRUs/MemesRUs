@@ -44,6 +44,7 @@ module.exports = Backbone.View.extend({
 
   newMeme: function(e){
     e.preventDefault();
+
     var ourData ={
           originalName: this.$el.find('.chosenOne').attr('src'),
           topText: this.$el.find('input[name="topText"]').val(),
@@ -53,7 +54,6 @@ module.exports = Backbone.View.extend({
         this.$el.find('input').val('');
         this.model.set(ourData);
         this.model.save();
-
   },
 
   initialize:function(){

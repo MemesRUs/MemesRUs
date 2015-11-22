@@ -240,6 +240,7 @@ module.exports = Backbone.View.extend({
 
   newMeme: function(e){
     e.preventDefault();
+
     var ourData ={
           originalName: this.$el.find('.chosenOne').attr('src'),
           topText: this.$el.find('input[name="topText"]').val(),
@@ -249,7 +250,6 @@ module.exports = Backbone.View.extend({
         this.$el.find('input').val('');
         this.model.set(ourData);
         this.model.save();
-
   },
 
   initialize:function(){
@@ -13213,7 +13213,7 @@ module.exports = {
       '</div>',
       '</div>',
       '<article class="createAMeme col-md-6">',
-      '<h1 style="text-align:center">select your base meme!</h1>',
+      '<h1 style="text-align:center">Select your base meme!</h1>',
       '<ul class="col-md-12 containImages">',
       '</ul>',
       '</article>',
@@ -13225,8 +13225,8 @@ module.exports = {
       '<input type="text" name="botText" class="formBottomText" maxlength="65" autocomplete="off" placeholder="bottom text">',
       '</div>',
       '<div class="formbutton">',
-      '<button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>',
-      '<button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>',
+      '<button type="submit" class="formSubButton" value="Submit" name="Submit">Submit</button>',
+      '<button type="preview" class="previewMeme" value="preview" name="preview">Preview</button>',
       '</div>',
       '</form>',
       '</aside>'
