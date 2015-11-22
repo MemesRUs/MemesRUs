@@ -185,6 +185,17 @@ header:hover .title {
 .uploadImg {
   clear: both; }
 
+#input-1 {
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px; }
+
+.newImgSubBut {
+  clear: both;
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px; }
+
 /*---*/
 .formSampleImg {
   width: 450px;
@@ -206,7 +217,7 @@ header:hover .title {
   margin: 30px auto; }
 
 .formbutton button {
-  margin: 0 60px; }
+  margin: 0 50px; }
 
 .formSubButton {
   width: 230px; }
@@ -218,6 +229,10 @@ header:hover .title {
   padding: 30px 15px;
   margin: 10px auto;
   border: 1px solid white; }
+
+.sampleList {
+  float: none;
+  margin: 20px auto; }
 
 /*PUT CODE IN HERE*/
 /*---*/

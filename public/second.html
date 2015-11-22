@@ -22,18 +22,18 @@
     <section>
 
       <div class="container sampleMeme">
-
-        <div class="ourMeme">
-          <div class="topTextSamp">
-            This is some text!
-          </div>
-          <div class="botTextSamp">
-            This is Bottom Text!
-          </div>
+        <div class="memeListing sampleList">
+        <div class="imgHolder" style="background-image:url()">
+        <h4 class="topLayer"> topText</h4>
+        <h4 class="bottomLayer"> bottomText</h4>
+        </div>
+        <ul class="memeUL">
+        <li> <img class="iconHeart" src="heart.svg"/> <span id="likeCount"></span> </li>
+        <li> <span id="liker"><img class="iconHeart" src="heart-outlined.svg"/></li></span>
+        <li> <img class="iconUser" src="user.svg"/> <b></b></li>
+        </ul>
         </div>
 
-
-      </div>
       <article class="createAMeme col-md-6">
         <h1 style="text-align:center">select your base meme!</h1>
         <ul class="col-md-12 containImages">
@@ -92,104 +92,12 @@
         </div>
 
       </aside>
-      <!-- <div class="container sampleMeme">
-          <div class="ourMeme">
-            <div class="topTextSamp">
-              This is some text!
-            </div>
-            <div class="botTextSamp">
-              This is Bottom Text!
-            </div>
-          </div>
       </div>
+      </section>
 
-
-      <div class="col-md-12 createAMeme">
-            <div class="col-md-6 sampleimages">
-                <h1 style="text-align:center">select your base meme!</h1>
-                <ul class="col-md-12 containImages">
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                  <li class="col-md-4 eachimg">
-                    <a href="#"><img class="thumb" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d" alt=""></a>
-                  </li>
-                </ul>
-                <div class="upload">
-                  <h4>or upload your own image</h4>
-
-
-                  <form action="/upload" method="Post" enctype="multipart/form-data" class="uploadImg">
-                    <input type="file">
-                    <button type="submit" class="newImgSubBut">Upload</button>
-                  </form>
-
-
-                </div>
-
-
-            </div>
-
-            <div class="col-md-6 newMemeForm">
-
-                      <form action="" class="formGenerate">
-                          <div class="col-md 8">
-
-                              <input type="text" name="topText" class="formTopText" placeholder="top text">
-                              <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
-
-                          </div>
-                          <div class="col-md-4">
-                              <button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>
-                              <button type="preview" class="btn btn-primary previewMeme" value="preview" name="preview">Preview</button>
-                          </div>
-
-                      </form>
-
-
-            </div>
-
-      </div> -->
-
-
-
-    </section>
     <footer>
 
     </footer>
-
-    <div class="formContainer">
-        <div class="formSampleImg">
-
-            <form action="" class="formGenerate">
-              <div class="col-md 8">
-                <img class="formImage" src="http://brammoforum.com/index.php?action=media;sa=media;in=349;preview" alt="">
-                <input type="text" name="topText" class="formTopText" placeholder="top text">
-                <input type="text" name="botText" class="formBottomText" placeholder="bottom text">
-                <input type="submit" class="formSubButton" value="Submit" name="Submit">
-              </div>
-
-
-
-
-            </form>
-        </div>
-
-    </div>
-
-
 
   </body>
 </html>
