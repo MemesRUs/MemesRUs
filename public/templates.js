@@ -2,15 +2,21 @@ module.exports = {
 
     header:[
 
-      "<h1 class='title'> Meme or Death</h1>",
-      "<div class='login'>",
-      "<form class='inputForm'>",
-      "<input type='text' placeholder='username' name='username' class='loginInput'>",
-      "<input type='password' placeholder='password' name='password' class='loginInput'>",
-      "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-      "<button type='button' name='button' class='loginButton'>continue as guest</button>",
-      "</form>",
-      "</div>"
+
+             "<h1 class='title'> Meme or Die!!?...</h1>",
+            //  "<img src='http://st.depositphotos.com/1742172/2154/v/950/depositphotos_21546969-Cartoon-scary-ghost.jpg' />",
+             "<div class='login'>",
+             "</div>",
+             "<form class='inputForm'>",
+             "<input type='text' placeholder='username' name='username' class='loginInput'>",
+             "<input type='text' placeholder='password' name='password' class='loginInput'>",
+             "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
+             "<button type='button' name='button' class='loginButton'>continue as guest</button>",
+             "</form>",
+
+             "<div class='headerDiv'> <img src='icons/home.jpg' class='divIcon1'/></div>",
+             "<div class='headerDiv'><img src='icons/add64.png'/ class='divIcon2'> </div>"
+
 
     ].join(''),
 
@@ -29,8 +35,8 @@ module.exports = {
 
 
     formPage:[
-      '<div class="container sampleMeme">',
       '<div class="memeListing sampleList">',
+      '<a href="#">home</a>',
       '<div class="imgHolder" style="background-image:url()">',
       '<h4 class="topLayer"> topText</h4>',
       '<h4 class="bottomLayer"> bottomText</h4>',
@@ -51,8 +57,8 @@ module.exports = {
       '<form action="" class="formGenerate">',
       '<h1 style="text-align:center">Create your Own Meme</h1>',
       '<div class="col-md 8">',
-      '<input type="text" name="topText" class="formTopText" placeholder="top text">',
-      '<input type="text" name="botText" class="formBottomText" placeholder="bottom text">',
+      '<input type="text" name="topText" class="formTopText" maxlength="65" autocomplete="off" placeholder="top text">',
+      '<input type="text" name="botText" class="formBottomText" maxlength="65" autocomplete="off" placeholder="bottom text">',
       '</div>',
       '<div class="formbutton">',
       '<button type="submit" class="btn btn-primary formSubButton" value="Submit" name="Submit">Submit</button>',
@@ -81,6 +87,7 @@ module.exports = {
 
 
     footer:[
+
 
     ].join('')
 

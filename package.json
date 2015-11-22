@@ -1,7 +1,6 @@
 {
   "name": "memesrus",
   "version": "1.0.0",
-  "description": "",
   "main": "devnotes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,6 @@
   "bugs": {
     "url": "https://github.com/bdjones2410/MemesRUs/issues"
   },
-  "homepage": "https://github.com/bdjones2410/MemesRUs#readme"
+  "homepage": "https://github.com/bdjones2410/MemesRUs#readme",
+  "description": ""
 }
