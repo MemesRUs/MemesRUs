@@ -144,7 +144,7 @@ public class MemeController {
     }
 
     @RequestMapping("/create-memes")
-    public Page<Meme> upload(
+    public Page<Meme> createMemes(
                         HttpSession session,
                         MultipartFile file,
                         String topText,
@@ -171,6 +171,16 @@ public class MemeController {
         memeFile.user = user;
         memes.save(memeFile);
         return memes.findAllByUser(pageRequest, user);
+    }
+    @RequestMapping("/get-blank-memes")
+    public Page getBlanks(HttpSession session,
+                          @RequestParam(defaultValue = "0") int page) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null){
+            throw new Exception("Literally Shooting Blanks");
+        }
+        PageRequest pageRequest = new PageRequest(page, 6);
+        return memes.findAllBlankMemes(pageRequest);
     }
 
     @RequestMapping("/get-memes")
