@@ -11,14 +11,13 @@ var _ = require('underscore');
 // var MemeModel = require('./model');
 // var MemeView = require('./modelView');
 var layoutView = require('./layoutView');
+var Router = require('./router');
 
 
 $(function () {
 
-  // var memes = new MemeCollection();
-  //
-  // memes.fetch().then(function (data) {
-  //   var memeView = new MemeCollectionView({collection: memes});
-  // });
    new layoutView();
+   new Router();
+   Backbone.history.start();
+
 });

@@ -7,6 +7,12 @@
 
 $testBorder:1px solid white;
 
+$headerFont: 'Permanent Marker', cursive;
+
+$mainDarkColor: #012837;
+$mainMedColor: #2D728D;
+$mainLightColor: #D0E4EC;
+
 /*---*/
 
 
@@ -18,8 +24,9 @@ $testBorder:1px solid white;
 /*---*/
 
 
-/*PUT CODE IN HERE*/
-
+body {
+  background-color: #F3F7F9;
+}
 
 /*---*/
 /*****************************************
@@ -28,6 +35,7 @@ $testBorder:1px solid white;
 /*---*/
 
 header {
+
   border-bottom: 3px solid black;
   background-image: url(http://www.designerstep.com/wp-content/uploads/2014/03/banner-11.jpg);
   height: 300px;
@@ -38,46 +46,43 @@ header {
 }
 
 .title {
-  color: darkcyan;
-  position: absolute;
+  color: $mainMedColor;
+  display: inline-block;
+  font-family: $headerFont;
+  font-size: 4.5em;
   margin-left: 5%;
-  margin-top: 7%;
-}
-header:hover {
-  .title {
-    transform: rotate(-30deg);
-    transition: ease-in 0.7s;
+  margin-top: 10px;
+  transition: all ease-in-out 0.7s;
+  &:hover {
+    transform: scale(1.1);
   }
 }
+
 .login {
-  background-color: aqua;
-  height: 257px;
-  width: 30%;
-  margin: auto;
+  display: inline-block;
+  background-color: $mainMedColor;
+  width: auto;
   border-radius: 5%;
-  opacity: 0.3;
+  opacity: 0.5;
+  float: right;
 }
+
+.title, .login {
+  vertical-align: middle;
+}
+
 .loginInput {
-  display: inherit;
-  height: 40px;
-  width: 140%;
-  margin-top: 7%;
-  font-size: 22px;
+  display: inline-block;
+  margin: 5px;
 }
+
 .inputForm{
-  margin-left: 39%;
-  position: absolute;
-  margin-top: -14.5%;
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
 .loginButton {
-  height: 40px;
-  width: 135%;
-  margin-top: 5%;
-  font-size: 23px;
-  font-family: fantasy;
+  margin: 5px;
   text-shadow: 2px 2px 2px white;
-  margin-left: 2%;
 }
 
 .hidden {
@@ -123,82 +128,204 @@ header:hover {
 
 /*---*/
 
+  // ALL MEME LISTINGS
 .articleMemes {
-  background-color: #FFDB96;
-}
-
-.memeListing {
-  width: 60%;
-  margin: 10px auto;
-}
-
-.imgHolder {
-  width: 400px;
-  height: 350px;
-  overflow: hidden;
-  margin: 0 auto;
-  background-color: #BB9958;
-  text-align: center;
-  .mainImg {
-    width: 90%;
-    margin: 10px auto;
-    position: relative;
- }
-}
-
-.memeUL {
+  margin: auto;
   width: 90%;
-  margin: 0 auto;
-  margin: 0 auto;
-  -webkit-columns: 3;
-  -webkit-column-gap: 1;
-  -webkit-column-rule: 0;
-  columns: 3;
-  column-gap: 3;
-  list-style-type: none;
-  padding: 0;
-  li {
-    // background-color: #FFE8BA;
-    text-align: left;
-    width: 100%;
-    list-style-type: none;
-    display: inline-block;
+}
+
+  // INDIVIDUAL LISTING
+.memeListing {
+  background-color: $mainLightColor;
+  border-radius: 3%;
+  float: left;
+  margin: 20px 0;
+  padding: 10px 0 0 0;
+  width: 45%;
+  &:nth-child(2n) {
+    float: right;
+  }
+  &:nth-child(3n) {
+    clear: left;
   }
 }
 
+  // INDIVIDUAL IMAGE
+.imgHolder {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  margin: 3px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 95%;
+}
+
+  // TOP TEXT
 .topLayer {
-  position: absolute;
-  top: 5%;
-  left: 30%;
   color: white;
   font-size: 2em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  position: relative;
+  top: 4%;
 }
 
+  // BOTTOM TEXT
 .bottomLayer {
-  position: absolute;
-  left: 30%;
-  bottom: 30%;
   color: white;
   font-size: 2em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  position: relative;
+  top: 45%;
 }
 
+  // LIKES/AUTHOR
+.memeUL {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  -webkit-columns: 3;
+  -webkit-column-gap: 1;
+  -webkit-column-rule: 0;
+  width: 90%;
+  li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0 0 5px 0;
+    text-align: left;
+    width: 100%;
+    &:nth-child(2n) {
+      text-align: center;
+    }
+    &:nth-child(3n) {
+      text-align: right;
+    }
+  }
+}
+
+  // LIKE ICONS
 .iconHeart {
-  width: 20px;
+  opacity: .85;
+  padding: 1%;
+  width: 17px;
 }
 
+#liker:hover {
+  cursor: pointer;
+}
+
+  //USER ICON
+.iconUser {
+  opacity: .85;
+  padding: 1%;
+  width: 15px;
+}
 
 /*---*/
 
 
 /*****************************************
-                ASIDE
+                FORM PAGE
 *****************************************/
+.sampleMeme{
+  background-color:blue;
+}
 
+.ourMeme{
+  background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMP-0ysGcJ3VTKVspAykl1ubiuqPzanwByljhIkTloFaKE7k_d");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: 50%;
+  height: 450px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.createAMeme{
+  background-color:red;
+}
+.sampleimages{
+  background-color:orange;
+}
+
+.newMemeForm{
+  background-color:purple;
+}
+.thumb{
+  width:100%;
+}
+.containImages{
+  list-style: none;
+
+}
+.eachimg{
+  margin:15px 0px;
+  list-style: none;
+}
+.uploadImg{
+  clear:both;
+
+}
+#input-1{
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px;
+}
+.newImgSubBut{
+  clear:both;
+  background-color: #ABABAB;
+  border-radius: 5px;
+  margin: 5px;
+}
 
 
 /*---*/
+.formSampleImg{
+  width:450px;
+  padding:15px;
+}
 
+.formImage{
+  width:350px;
+  display:block;
+  margin:0 auto;
+}
 
+.formTopText{
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+}
+
+.formBottomText{
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+}
+.formbutton{
+  button{
+    margin:0 50px;
+  }
+}
+.formSubButton{
+  width:230px;
+}
+.previewMeme{
+  float:right;
+}
+
+.formGenerate{
+  padding: 30px 15px;
+  margin: 10px auto;
+  border: 1px solid white;
+}
+
+.sampleList{
+  float:none;
+  margin:20px auto;
+}
 /*PUT CODE IN HERE*/
 
 

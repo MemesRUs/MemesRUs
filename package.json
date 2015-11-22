@@ -1,0 +1,19 @@
+{
+  "name": "memesrus",
+  "version": "1.0.0",
+  "main": "devnotes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdjones2410/MemesRUs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdjones2410/MemesRUs/issues"
+  },
+  "homepage": "https://github.com/bdjones2410/MemesRUs#readme",
+  "description": ""
+}

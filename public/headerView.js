@@ -10,13 +10,14 @@
 
 
   initialize: function () {
-    console.log('HELLOOOO');
+
   },
 
   template: _.template(tmpl.header),
 
   events: {
-    'click #but1': 'signInHide'
+    'click #but1': 'signInHide',
+    'click .loginButton': 'continueLogin'
   },
 
   render: function () {
@@ -26,10 +27,42 @@
   },
 
   signInHide: function(){
-    this.$el.find('.login').addClass('hidden');
+
+    // this.$el.find('.login').addClass('hidden');
+    //
+    //
+    // console.log(this);
 
 
-    console.log(this);
 
-  }
+    // this.$el.addClass('hidden');
+      var that = $('#but1');
+      var user = that.siblings('input[name="username"]').val();
+      var pass = that.siblings('input[name="password"]').val();
+
+
+    $.ajax({
+      url:"/login",
+      method:"POST",
+      data: {username:user, password:pass},
+      success:function(){
+        console.log("logged in");
+        $.ajax({
+          url:"/get-memes",
+          method:"GET",
+          success:function(data){
+
+          console.log( data);
+          },
+          failure:function(){
+            console.log("nope!");
+          }
+        });
+      },
+      failure:function(){
+        console.log("did not work");
+      }
+    });
+    console.log(that);
+}
 });

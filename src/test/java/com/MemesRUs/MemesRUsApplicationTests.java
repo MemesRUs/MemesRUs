@@ -1,5 +1,6 @@
 package com.MemesRUs;
 
+import com.MemesRUs.entities.Meme;
 import com.MemesRUs.services.MemeRepository;
 import com.MemesRUs.services.UserRepository;
 import org.junit.Before;
@@ -11,9 +12,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -33,13 +37,13 @@ public class MemesRUsApplicationTests {
 
 	MockMvc mockMvc;
 
-
 	@Before
 	public void before() {
 		userRepo.deleteAll();
 		memeRepo.deleteAll();
 		mockMvc = MockMvcBuilders.webAppContextSetup(wap).build();
 	}
+
 	@Test
 	public void loginTest() throws Exception {
 		mockMvc.perform(
@@ -51,10 +55,21 @@ public class MemesRUsApplicationTests {
 	}
 
 	@Test
-	public void testUpload() throws Exception {
+	public void testBlankMemes() throws Exception {
+		MvcResult result = mockMvc.perform(
+				MockMvcRequestBuilders.get("/get-blank-memes")
+				.sessionAttr("username", "TestUser")
+		).andReturn();
+		String content = result.getResponse().getContentAsString();
+
+		assertTrue(content.length() > 0);
+	}
+
+	@Test
+	public void testCreateMemes() throws Exception {
 		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
 				.file(testFile)
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
@@ -66,26 +81,63 @@ public class MemesRUsApplicationTests {
 	}
 
 	@Test
-	public void testEdit() throws Exception {
-		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jped", "test img".getBytes());
+	public void testUserRatig() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/upload")
-						.file(testFile)
-						.param("topText", "LOLOL")
-						.param("bottomText", "NOT SO FUNNY")
-						.param("popularityRating", "10")
-						.sessionAttr("username", "TestUser")
+				MockMvcRequestBuilders.fileUpload("/create-memes")
+				.file(testFile)
+				.param("topText", "LOLOL")
+				.param("bottomText", "NOT SO FUNNY")
+				.param("popularityRating", "11")
+				.sessionAttr("username", "TestUser")
+		);
+		assertTrue(memeRepo.count() == 1);
+	}
+
+	@Test
+	public void testEdit() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/create-memes")
+				.file(testFile)
+				.param("topText", "LOLOL")
+				.param("bottomText", "NOT SO FUNNY")
+				.param("popularityRating", "10")
+				.sessionAttr("username", "TestUser")
 
 		);
+		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
 		mockMvc.perform(
 				MockMvcRequestBuilders.fileUpload("/edit-meme")
 				.file(testFile)
-				.param("id", "1")
+				.param("id", memeList.get(0).id + "")
 				.param("topText", "NOT SO FUNNY")
 				.param("bottomText", "LOLOL")
 				.param("popularityRating", "15")
 				.sessionAttr("username", "TestUser")
 		);
 		assertTrue(memeRepo.count() == 1);
+	}
+
+	@Test
+	public void testDelete() throws Exception {
+		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/create-memes")
+				.file(testFile)
+				.param("topText", "NOT SO FUNNY")
+				.param("bottomText", "LOLOL")
+				.param("popularityRating", "15")
+				.sessionAttr("username", "TestUser")
+		);
+		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
+		mockMvc.perform(
+				MockMvcRequestBuilders.fileUpload("/delete-meme")
+				.file(testFile)
+				.param("id", memeList.get(0).id + "")
+				.sessionAttr("username", "TestUser")
+
+		);
+		assertTrue(memeRepo.count() == 0);
 	}
 }
