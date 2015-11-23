@@ -10,7 +10,7 @@ public class Meme {
     @Id
     @GeneratedValue
     @Column(nullable = false)
-    public int id;
+    public Integer id;
 
     @Column(nullable = false)
     public String originalName;
