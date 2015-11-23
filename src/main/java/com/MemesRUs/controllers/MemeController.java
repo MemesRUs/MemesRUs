@@ -67,11 +67,12 @@ public class MemeController {
         memeFileThree.generatedName = memeFileThree.originalName;
         memes.save(memeFileThree);
 
+
         Meme memeFileFour = new Meme();
         memeFileFour.topText = topText;
         memeFileFour.bottomText = bottomText;
         memeFileFour.popularityRating = popularityRating;
-        memeFileFour.originalName = "blank memes/fat fuck meme.jpg";
+        memeFileFour.originalName = "blank memes/Futurama-Fry meme.jpg";
         memeFileFour.generatedName = memeFileFour.originalName;
         memes.save(memeFileFour);
 
@@ -79,7 +80,7 @@ public class MemeController {
         memeFileFive.topText = topText;
         memeFileFive.bottomText = bottomText;
         memeFileFive.popularityRating = popularityRating;
-        memeFileFive.originalName = "blank memes/Futurama-Fry meme.jpg";
+        memeFileFive.originalName = "blank memes/game of thrones meme.jpg";
         memeFileFive.generatedName = memeFileFive.originalName;
         memes.save(memeFileFive);
 
@@ -87,7 +88,7 @@ public class MemeController {
         memeFileSix.topText = topText;
         memeFileSix.bottomText = bottomText;
         memeFileSix.popularityRating = popularityRating;
-        memeFileSix.originalName = "blank memes/game of thrones meme.jpg";
+        memeFileSix.originalName = "blank memes/gangster kid meme.jpg";
         memeFileSix.generatedName = memeFileSix.originalName;
         memes.save(memeFileSix);
 
@@ -95,7 +96,7 @@ public class MemeController {
         memeFileSeven.topText = topText;
         memeFileSeven.bottomText = bottomText;
         memeFileSeven.popularityRating = popularityRating;
-        memeFileSeven.originalName = "blank memes/gangster kid meme.jpg";
+        memeFileSeven.originalName = "blank memes/little girl meme.png";
         memeFileSeven.generatedName = memeFileSeven.originalName;
         memes.save(memeFileSeven);
 
@@ -103,7 +104,7 @@ public class MemeController {
         memeFileEight.topText = topText;
         memeFileEight.bottomText = bottomText;
         memeFileEight.popularityRating = popularityRating;
-        memeFileEight.originalName = "blank memes/little girl meme.png";
+        memeFileEight.originalName = "blank memes/scum bag.jpeg";
         memeFileEight.generatedName = memeFileEight.originalName;
         memes.save(memeFileEight);
 
