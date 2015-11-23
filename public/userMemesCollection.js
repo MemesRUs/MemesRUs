@@ -8,6 +8,6 @@ module.exports = Backbone.Collection.extend({
   url: '/get-memes',
   model: userMemeModel,
   initialize: function() {
-    console.log("user's memes");
+  
   }
 });

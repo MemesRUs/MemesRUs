@@ -18,6 +18,5 @@ module.exports = Backbone.Collection.extend({
   url:'/get-blank-memes',
   model: BlankModel,
   initialize: function(){
-    console.log("blankMeme");
   }
 });

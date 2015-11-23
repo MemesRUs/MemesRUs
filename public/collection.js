@@ -8,6 +8,6 @@ module.exports = Backbone.Collection.extend({
   url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
   model: MemeModel,
   initialize: function() {
-    console.log("HELLO FROM MEME COLLECTION");
+    
   }
 });

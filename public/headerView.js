@@ -3,6 +3,7 @@
   Backbone.$ = $;
   var _ = require('underscore');
   var tmpl = require('./templates');
+  var layoutView = require('./layoutView');
 
   module.exports = Backbone.View.extend({
   initialize: function () {
@@ -10,13 +11,31 @@
   },
   template: _.template(tmpl.header),
   events: {
-    'click #but1': 'signInHide'
-    // 'click #homeTest': 'homeRedirect'
+    'click #but1': 'signInHide',
+    'click #logmeout': 'logout'
   },
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
+  },
+
+  logout:function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'/logout',
+      method:'POST',
+      success:function(){
+        window.location.replace('#');
+        loggedIn = false;
+        $('.inputForm').removeClass('hidden');
+        $('.login').css('margin-top','2.5%');
+        $('.headerNav').addClass('hidden');
+      },
+      failure:function(){
+
+      },
+    });
   },
   signInHide: function(){
 
@@ -37,28 +56,17 @@
           url:"/get-all-memes",
           method:"GET",
           success:function(data){
-            console.log(data);
+
           },
           failure:function(){
-            console.log("nope!");
+
           }
         });
       },
       failure:function(){
-        console.log("did not work");
+
       }
     });
-    console.log(that);
 }
-// homeRedirect: function() {
-//   if(loggedIn === true) {
-//     console.log("you're logged in");
-//     $('.articleMemes').html(
-//     memeCollection.fetch().then(function (){
-//       new MemeCollectionView({collection: memeCollection});
-//     }));
-//   } else {
-//     console.log("you're not logged in");
-//   }
-//  }
+
 });

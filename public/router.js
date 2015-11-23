@@ -13,20 +13,12 @@ module.exports = Backbone.Router.extend({
       '': 'homePage',
       'addMemes': 'addMeme',
       'userMemes': 'userMemes',
-      'logout': 'loggedout',
+
 
     },
 
     initialize: function(){},
 
-    loggedout:function(){
-      window.location.replace('/logout');
-
-      window.location.replace('#').then(function(e){
-        e.preventDefault();
-        new layoutView();
-      });
-    },
 
     userMemes:function(){
       $('article').html("");

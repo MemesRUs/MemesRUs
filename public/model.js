@@ -15,6 +15,6 @@ module.exports = Backbone.Model.extend({
     };
   },
   initialize: function () {
-    console.log("meme models being created...");
+  
   }
 });

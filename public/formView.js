@@ -49,7 +49,7 @@ module.exports = Backbone.View.extend({
           originalName: this.$el.find('.chosenOne').attr('src'),
           topText: this.$el.find('input[name="topText"]').val(),
           bottomText: this.$el.find('input[name="botText"]').val(),
-          popularityRating: 0,
+          popularityRating: 0
         };
         this.$el.find('input').val('');
         this.model.set(ourData);

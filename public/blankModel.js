@@ -15,6 +15,5 @@ var layoutView = require('./layoutView');
 module.exports = Backbone.Model.extend({
     urlRoot: '/get-blank-memes',
     initialize:function(){
-      console.log("grabbing these memes!");
     }
 });

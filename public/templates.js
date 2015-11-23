@@ -13,7 +13,7 @@ module.exports = {
              "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
              "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
              "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
-             "<li><a href='#logout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "<li><a href='#' id='logmeout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
              "</ul>",
              "</div>"
 

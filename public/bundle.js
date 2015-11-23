@@ -50,7 +50,6 @@ module.exports = Backbone.Collection.extend({
   url:'/get-blank-memes',
   model: BlankModel,
   initialize: function(){
-    console.log("blankMeme");
   }
 });
 
@@ -72,7 +71,6 @@ var layoutView = require('./layoutView');
 module.exports = Backbone.Model.extend({
     urlRoot: '/get-blank-memes',
     initialize:function(){
-      console.log("grabbing these memes!");
     }
 });
 
@@ -130,7 +128,7 @@ module.exports = Backbone.Collection.extend({
   url: 'http://tiny-tiny.herokuapp.com/collections/memeordeath',
   model: MemeModel,
   initialize: function() {
-    console.log("HELLO FROM MEME COLLECTION");
+    
   }
 });
 
@@ -245,7 +243,7 @@ module.exports = Backbone.View.extend({
           originalName: this.$el.find('.chosenOne').attr('src'),
           topText: this.$el.find('input[name="topText"]').val(),
           bottomText: this.$el.find('input[name="botText"]').val(),
-          popularityRating: 0,
+          popularityRating: 0
         };
         this.$el.find('input').val('');
         this.model.set(ourData);
@@ -276,6 +274,7 @@ module.exports = Backbone.View.extend({
   Backbone.$ = $;
   var _ = require('underscore');
   var tmpl = require('./templates');
+  var layoutView = require('./layoutView');
 
   module.exports = Backbone.View.extend({
   initialize: function () {
@@ -283,13 +282,31 @@ module.exports = Backbone.View.extend({
   },
   template: _.template(tmpl.header),
   events: {
-    'click #but1': 'signInHide'
-    // 'click #homeTest': 'homeRedirect'
+    'click #but1': 'signInHide',
+    'click #logmeout': 'logout'
   },
   render: function () {
     var markup = this.template({});
     this.$el.html(markup);
     return this;
+  },
+
+  logout:function(e){
+    e.preventDefault();
+    $.ajax({
+      url:'/logout',
+      method:'POST',
+      success:function(){
+        window.location.replace('#');
+        loggedIn = false;
+        $('.inputForm').removeClass('hidden');
+        $('.login').css('margin-top','2.5%');
+        $('.headerNav').addClass('hidden');
+      },
+      failure:function(){
+
+      },
+    });
   },
   signInHide: function(){
 
@@ -310,33 +327,22 @@ module.exports = Backbone.View.extend({
           url:"/get-all-memes",
           method:"GET",
           success:function(data){
-            console.log(data);
+
           },
           failure:function(){
-            console.log("nope!");
+
           }
         });
       },
       failure:function(){
-        console.log("did not work");
+
       }
     });
-    console.log(that);
 }
-// homeRedirect: function() {
-//   if(loggedIn === true) {
-//     console.log("you're logged in");
-//     $('.articleMemes').html(
-//     memeCollection.fetch().then(function (){
-//       new MemeCollectionView({collection: memeCollection});
-//     }));
-//   } else {
-//     console.log("you're not logged in");
-//   }
-//  }
+
 });
 
-},{"./templates":18,"backbone":14,"jquery":15,"underscore":16}],10:[function(require,module,exports){
+},{"./layoutView":10,"./templates":18,"backbone":14,"jquery":15,"underscore":16}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
@@ -407,7 +413,7 @@ module.exports = Backbone.Model.extend({
     };
   },
   initialize: function () {
-    console.log("meme models being created...");
+  
   }
 });
 
@@ -434,9 +440,8 @@ module.exports = Backbone.View.extend({
     'click span': 'likeMeme'
   },
   likeMeme: function () {
-    console.log(this);
-    var currLikes = this.model.attributes.likes;
-    this.model.set({likes: currLikes+1});
+    var currLikes = this.model.attributes.popularityRating;
+    this.model.set({popularityRating: currLikes+1});
     this.$el.find('#likeCount').html(currLikes+1);
     this.model.save();
   },
@@ -13126,20 +13131,12 @@ module.exports = Backbone.Router.extend({
       '': 'homePage',
       'addMemes': 'addMeme',
       'userMemes': 'userMemes',
-      'logout': 'loggedout',
+
 
     },
 
     initialize: function(){},
 
-    loggedout:function(){
-      window.location.replace('/logout');
-
-      window.location.replace('#').then(function(e){
-        e.preventDefault();
-        new layoutView();
-      });
-    },
 
     userMemes:function(){
       $('article').html("");
@@ -13190,7 +13187,7 @@ module.exports = {
              "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
              "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
              "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
-             "<li><a href='#logout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "<li><a href='#' id='logmeout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
              "</ul>",
              "</div>"
 
