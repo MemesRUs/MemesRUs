@@ -256,6 +256,7 @@ header {
   display: inline-block;
   width: 45%;
 }
+
 .sampleimages{
   width: 25%;
   margin: 5px;
@@ -272,9 +273,15 @@ header {
     padding: 0;
   }
 }
-.thumb{
-  width: 150px;
+
+.thumb {
+  width: 145px;
 }
+
+.chosenOne{
+  border: 3px solid $mainLightColor;
+}
+
 .containImages{
   list-style: none;
 
@@ -326,6 +333,7 @@ header {
 
 .formbutton {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .formSubButton{
@@ -334,18 +342,20 @@ header {
   background-color: #57C088;
   border: 1px solid $mainDarkColor;
   width: 30%;
-  float: right;
-  margin-left: 5px;
-  margin-bottom: 20px;
+  margin-right: 50px;
+  &:hover{
+    background-color: #0C8F49;
+  }
 }
+
 .previewMeme{
   border-radius: 5%;
   background-color: #FFE092;
   border: 1px solid $mainDarkColor;
   width: 30%;
-  float: right;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  &:hover{
+    background-color: #FFC074;
+  }
 }
 
 .formGenerate{
@@ -358,7 +368,6 @@ header {
   float:none;
   margin:20px auto;
 }
-/*PUT CODE IN HERE*/
 
 
 

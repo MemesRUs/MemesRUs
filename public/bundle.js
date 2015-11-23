@@ -13139,7 +13139,10 @@ module.exports = Backbone.Router.extend({
 
     homePage: function(){
 
-       new layoutView();
+      var memeCollection = new MemeCollection();
+      memeCollection.fetch().then(function (){
+        new MemeCollectionView({collection: memeCollection});
+      });
 
   },
 
@@ -13172,13 +13175,12 @@ module.exports = {
              "<input type='text' placeholder='username' name='username' class='loginInput'>",
              "<input type='password' placeholder='password' name='password' class='loginInput'>",
              "<button type='button' name='button' id='but1' class='loginButton'>login</button>",
-             "<button type='button' name='button' id='but2' class='loginButton'>continue as guest</button>",
              "</form>",
              "<ul class='headerNav hidden'>",
              "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
              "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
              "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
-             "<li><a href='#'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "<li><a href='#logout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
              "</ul>",
              "</div>"
 
@@ -13249,7 +13251,7 @@ module.exports = {
       '<li><img class="footerIcon" src="icons/pinterest-with-circle.svg"/></li>',
       '</ul>',
       '&copy; Meme or Die 2015<br>',
-      '<a href="http://www.entypo.com">Entypo</a> pictograms by Daniel Bruce<br>',
+      '<a href="http://www.entypo.com" target="_blank">Entypo</a> pictograms by Daniel Bruce<br>',
     ].join('')
 
 
