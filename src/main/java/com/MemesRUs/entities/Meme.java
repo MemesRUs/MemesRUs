@@ -27,9 +27,10 @@ public class Meme {
     @Column(nullable = false)
     public Integer popularityRating;
 
+    @Column(nullable = false)
+    public boolean isBlank;
+
     @ManyToOne
     public User user;
-
-
 
 }
