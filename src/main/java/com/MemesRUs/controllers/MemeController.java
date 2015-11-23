@@ -67,11 +67,12 @@ public class MemeController {
         memeFileThree.generatedName = memeFileThree.originalName;
         memes.save(memeFileThree);
 
+
         Meme memeFileFour = new Meme();
         memeFileFour.topText = topText;
         memeFileFour.bottomText = bottomText;
         memeFileFour.popularityRating = popularityRating;
-        memeFileFour.originalName = "blank memes/fat fuck meme.jpg";
+        memeFileFour.originalName = "blank memes/Futurama-Fry meme.jpg";
         memeFileFour.generatedName = memeFileFour.originalName;
         memes.save(memeFileFour);
 
@@ -79,7 +80,7 @@ public class MemeController {
         memeFileFive.topText = topText;
         memeFileFive.bottomText = bottomText;
         memeFileFive.popularityRating = popularityRating;
-        memeFileFive.originalName = "blank memes/Futurama-Fry meme.jpg";
+        memeFileFive.originalName = "blank memes/game of thrones meme.jpg";
         memeFileFive.generatedName = memeFileFive.originalName;
         memes.save(memeFileFive);
 
@@ -87,7 +88,7 @@ public class MemeController {
         memeFileSix.topText = topText;
         memeFileSix.bottomText = bottomText;
         memeFileSix.popularityRating = popularityRating;
-        memeFileSix.originalName = "blank memes/game of thrones meme.jpg";
+        memeFileSix.originalName = "blank memes/gangster kid meme.jpg";
         memeFileSix.generatedName = memeFileSix.originalName;
         memes.save(memeFileSix);
 
@@ -95,7 +96,7 @@ public class MemeController {
         memeFileSeven.topText = topText;
         memeFileSeven.bottomText = bottomText;
         memeFileSeven.popularityRating = popularityRating;
-        memeFileSeven.originalName = "blank memes/gangster kid meme.jpg";
+        memeFileSeven.originalName = "blank memes/little girl meme.png";
         memeFileSeven.generatedName = memeFileSeven.originalName;
         memes.save(memeFileSeven);
 
@@ -103,7 +104,7 @@ public class MemeController {
         memeFileEight.topText = topText;
         memeFileEight.bottomText = bottomText;
         memeFileEight.popularityRating = popularityRating;
-        memeFileEight.originalName = "blank memes/little girl meme.png";
+        memeFileEight.originalName = "blank memes/scum bag.jpeg";
         memeFileEight.generatedName = memeFileEight.originalName;
         memes.save(memeFileEight);
 
@@ -146,25 +147,22 @@ public class MemeController {
     @RequestMapping("/create-memes")
     public Page<Meme> createMemes(
                             HttpSession session,
-                            MultipartFile file,
                             String topText,
                             String bottomText,
                             int popularityRating,
+                            String originalName,
                             @RequestParam(defaultValue = "0") int page
                             )throws Exception{
         String username = (String) session.getAttribute("username");
         if (username == null){
         throw new Exception("You can't upload brah!");
         }
-        File f = File.createTempFile("file", file.getOriginalFilename(), new File ("public"));
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(file.getBytes());
 
         PageRequest pageRequest = new PageRequest(page, 6);
         User user = users.findOneByUsername(username);
         Meme memeFile = new Meme();
-        memeFile.originalName = file.getOriginalFilename();
-        memeFile.generatedName = f.getName();
+        memeFile.originalName = originalName;
+        memeFile.generatedName = originalName;
         memeFile.topText = topText;
         memeFile.bottomText = bottomText;
         memeFile.popularityRating = popularityRating;
