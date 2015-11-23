@@ -13126,10 +13126,20 @@ module.exports = Backbone.Router.extend({
       '': 'homePage',
       'addMemes': 'addMeme',
       'userMemes': 'userMemes',
+      'logout': 'loggedout',
 
     },
 
     initialize: function(){},
+
+    loggedout:function(){
+      window.location.replace('/logout');
+
+      window.location.replace('#').then(function(e){
+        e.preventDefault();
+        new layoutView();
+      });
+    },
 
     userMemes:function(){
       $('article').html("");
@@ -13139,7 +13149,10 @@ module.exports = Backbone.Router.extend({
 
     homePage: function(){
 
-       new layoutView();
+      var memeCollection = new MemeCollection();
+      memeCollection.fetch().then(function (){
+        new MemeCollectionView({collection: memeCollection});
+      });
 
   },
 
@@ -13178,7 +13191,7 @@ module.exports = {
              "<li><a href='#'><img class='headerIcon' src='icons/home.svg'/><br> HOME</a></li> ",
              "<li><a href='#userMemes'><img class='headerIcon' src='icons/folder.svg'/><br> COLLECTION</a></li> ",
              "<li><a href='#addMemes'><img class='headerIcon' src='icons/plus.svg'/><br>CREATE</a></li>",
-             "<li><a href='#'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
+             "<li><a href='#logout'><img class='headerIcon' src='icons/log-out.svg'/><br>LOG OUT</a></li>",
              "</ul>",
              "</div>"
 
