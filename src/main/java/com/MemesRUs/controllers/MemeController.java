@@ -8,6 +8,7 @@ import com.MemesRUs.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -147,10 +148,7 @@ public class MemeController {
     @RequestMapping("/create-memes")
     public Page<Meme> createMemes(
                             HttpSession session,
-                            String topText,
-                            String bottomText,
-                            int popularityRating,
-                            String originalName,
+                            @RequestBody Meme meme,
                             @RequestParam(defaultValue = "0") int page
                             )throws Exception{
         String username = (String) session.getAttribute("username");
@@ -160,14 +158,9 @@ public class MemeController {
 
         PageRequest pageRequest = new PageRequest(page, 6);
         User user = users.findOneByUsername(username);
-        Meme memeFile = new Meme();
-        memeFile.originalName = originalName;
-        memeFile.generatedName = originalName;
-        memeFile.topText = topText;
-        memeFile.bottomText = bottomText;
-        memeFile.popularityRating = popularityRating;
-        memeFile.user = user;
-        memes.save(memeFile);
+        meme.generatedName = meme.originalName;
+        meme.user = user;
+        memes.save(meme);
         return memes.findAllByUser(pageRequest, user);
     }
 
@@ -218,21 +211,15 @@ public class MemeController {
     @RequestMapping("/edit-meme")
     public void editMeme(
                     HttpSession session,
-                    int id,
-                    String topText,
-                    String bottomText,
-                    int popularityRating
+                    @RequestBody Meme meme
                     )throws Exception{
         String username = (String) session.getAttribute("username");
         if (username == null){
         throw new Exception ("You can't edit brah!");
         }
-        Meme memeFile = memes.findOne(id);
-        memeFile.topText = topText;
-        memeFile.bottomText = bottomText;
-        memeFile.popularityRating = popularityRating;
-        memeFile.user = users.findOneByUsername(username);
-        memes.save(memeFile);
+        meme.generatedName = meme.originalName;
+        meme.user = users.findOneByUsername(username);
+        memes.save(meme);
     }
 
     @RequestMapping("/delete-meme")
