@@ -20,9 +20,8 @@ module.exports = Backbone.View.extend({
     'click span': 'likeMeme'
   },
   likeMeme: function () {
-    console.log(this);
-    var currLikes = this.model.attributes.likes;
-    this.model.set({likes: currLikes+1});
+    var currLikes = this.model.attributes.popularityRating;
+    this.model.set({popularityRating: currLikes+1});
     this.$el.find('#likeCount').html(currLikes+1);
     this.model.save();
   },

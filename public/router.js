@@ -14,9 +14,11 @@ module.exports = Backbone.Router.extend({
       'addMemes': 'addMeme',
       'userMemes': 'userMemes',
 
+
     },
 
     initialize: function(){},
+
 
     userMemes:function(){
       $('article').html("");
