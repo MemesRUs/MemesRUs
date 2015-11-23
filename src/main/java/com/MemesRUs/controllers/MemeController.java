@@ -50,6 +50,7 @@ public class MemeController {
         memeFileOne.popularityRating = popularityRating;
         memeFileOne.originalName = "blank memes/baby meme.jpg";
         memeFileOne.generatedName = memeFileOne.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileOne);
 
         Meme memeFileTwo = new Meme();
@@ -58,6 +59,7 @@ public class MemeController {
         memeFileTwo.popularityRating = popularityRating;
         memeFileTwo.originalName = "blank memes/bad-luck-brian meme.png";
         memeFileTwo.generatedName = memeFileTwo.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileTwo);
 
         Meme memeFileThree = new Meme();
@@ -66,6 +68,7 @@ public class MemeController {
         memeFileThree.popularityRating = popularityRating;
         memeFileThree.originalName = "blank memes/family meme.jpg";
         memeFileThree.generatedName = memeFileThree.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileThree);
 
 
@@ -75,6 +78,7 @@ public class MemeController {
         memeFileFour.popularityRating = popularityRating;
         memeFileFour.originalName = "blank memes/Futurama-Fry meme.jpg";
         memeFileFour.generatedName = memeFileFour.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileFour);
 
         Meme memeFileFive = new Meme();
@@ -83,6 +87,7 @@ public class MemeController {
         memeFileFive.popularityRating = popularityRating;
         memeFileFive.originalName = "blank memes/game of thrones meme.jpg";
         memeFileFive.generatedName = memeFileFive.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileFive);
 
         Meme memeFileSix = new Meme();
@@ -91,6 +96,7 @@ public class MemeController {
         memeFileSix.popularityRating = popularityRating;
         memeFileSix.originalName = "blank memes/gangster kid meme.jpg";
         memeFileSix.generatedName = memeFileSix.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileSix);
 
         Meme memeFileSeven = new Meme();
@@ -99,6 +105,7 @@ public class MemeController {
         memeFileSeven.popularityRating = popularityRating;
         memeFileSeven.originalName = "blank memes/little girl meme.png";
         memeFileSeven.generatedName = memeFileSeven.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileSeven);
 
         Meme memeFileEight = new Meme();
@@ -107,6 +114,7 @@ public class MemeController {
         memeFileEight.popularityRating = popularityRating;
         memeFileEight.originalName = "blank memes/scum bag.jpeg";
         memeFileEight.generatedName = memeFileEight.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileEight);
 
         Meme memeFileNine = new Meme();
@@ -115,6 +123,7 @@ public class MemeController {
         memeFileNine.popularityRating = popularityRating;
         memeFileNine.originalName = "blank memes/southpark meme.jpg";
         memeFileNine.generatedName = memeFileNine.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileNine);
 
         Meme memeFileTen = new Meme();
@@ -123,6 +132,7 @@ public class MemeController {
         memeFileTen.popularityRating = popularityRating;
         memeFileTen.originalName = "blank memes/star trek meme.jpg";
         memeFileTen.generatedName = memeFileTen.originalName;
+        memeFileOne.isBlank = true;
         memes.save(memeFileTen);
     }
 
@@ -160,6 +170,7 @@ public class MemeController {
         User user = users.findOneByUsername(username);
         meme.generatedName = meme.originalName;
         meme.user = user;
+        meme.isBlank = false;
         memes.save(meme);
         return memes.findAllByUser(pageRequest, user);
     }
@@ -169,7 +180,7 @@ public class MemeController {
                     @RequestParam(defaultValue = "0") int page
                     ){
         PageRequest pageRequest = new PageRequest(page, 6);
-        return memes.findAllBlankMemes(pageRequest);
+        return memes.findByIsBlank(pageRequest, true);
     }
 
     @RequestMapping("/get-all-memes")
@@ -177,7 +188,7 @@ public class MemeController {
                         @RequestParam(defaultValue = "0") int page
                         ){
         PageRequest pageRequest = new PageRequest(page, 6);
-        return memes.findAllNonBlankMemes(pageRequest);
+        return memes.findByIsBlank(pageRequest, false);
     }
 
     @RequestMapping("/get-memes")

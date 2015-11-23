@@ -17,9 +17,5 @@ public interface MemeRepository extends PagingAndSortingRepository<Meme, Integer
     Page <Meme> findAllByUser(Pageable pageable, User user);
     Page <Meme> findAllByPopularityRating(Pageable pageable, User user);
 
-    @Query ("Select m from Meme m where originalName like '%blank meme%'")
-    Page <Meme> findAllBlankMemes(Pageable pageable);
-
-    @Query ("Select m from Meme m where originalName not like '%blank meme%'")
-    Page <Meme> findAllNonBlankMemes(Pageable pageable);
+    Page <Meme> findByIsBlank(Pageable pageable, boolean isBlank);
 }
