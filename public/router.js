@@ -26,7 +26,10 @@ module.exports = Backbone.Router.extend({
 
     homePage: function(){
 
-       new layoutView();
+      var memeCollection = new MemeCollection();
+      memeCollection.fetch().then(function (){
+        new MemeCollectionView({collection: memeCollection});
+      });
 
   },
 
