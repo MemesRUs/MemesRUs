@@ -67,10 +67,10 @@ public class MemesRUsApplicationTests {
 
 	@Test
 	public void testCreateMemes() throws Exception {
-		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/create-memes")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/create-memes")
+				.param("originalName", "original")
+				.param("generatedName", "lawl")
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
 				.param("popularityRating", "10")
@@ -82,10 +82,10 @@ public class MemesRUsApplicationTests {
 
 	@Test
 	public void testUserRatig() throws Exception {
-		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/create-memes")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/create-memes")
+				.param("originalName", "original")
+				.param("generatedName", "lawl")
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
 				.param("popularityRating", "11")
@@ -96,10 +96,10 @@ public class MemesRUsApplicationTests {
 
 	@Test
 	public void testEdit() throws Exception {
-		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/create-memes")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/create-memes")
+				.param("originalName", "original")
+				.param("generatedName", "lawl")
 				.param("topText", "LOLOL")
 				.param("bottomText", "NOT SO FUNNY")
 				.param("popularityRating", "10")
@@ -108,8 +108,7 @@ public class MemesRUsApplicationTests {
 		);
 		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/edit-meme")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/edit-meme")
 				.param("id", memeList.get(0).id + "")
 				.param("topText", "NOT SO FUNNY")
 				.param("bottomText", "LOLOL")
@@ -121,10 +120,10 @@ public class MemesRUsApplicationTests {
 
 	@Test
 	public void testDelete() throws Exception {
-		MockMultipartFile testFile = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test img".getBytes());
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/create-memes")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/create-memes")
+				.param("originalName", "original")
+				.param("generatedName", "lawl")
 				.param("topText", "NOT SO FUNNY")
 				.param("bottomText", "LOLOL")
 				.param("popularityRating", "15")
@@ -132,8 +131,7 @@ public class MemesRUsApplicationTests {
 		);
 		List<Meme> memeList = (List<Meme>) memeRepo.findAll();
 		mockMvc.perform(
-				MockMvcRequestBuilders.fileUpload("/delete-meme")
-				.file(testFile)
+				MockMvcRequestBuilders.post("/delete-meme")
 				.param("id", memeList.get(0).id + "")
 				.sessionAttr("username", "TestUser")
 
