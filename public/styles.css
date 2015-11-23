@@ -197,7 +197,10 @@ header {
     padding: 0; }
 
 .thumb {
-  width: 150px; }
+  width: 145px; }
+
+.chosenOne {
+  border: 3px solid #D0E4EC; }
 
 .containImages {
   list-style: none; }
@@ -241,7 +244,8 @@ header {
   margin: 20px auto; }
 
 .formbutton {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  text-align: center; }
 
 .formSubButton {
   border-radius: 5%;
@@ -249,18 +253,17 @@ header {
   background-color: #57C088;
   border: 1px solid #012837;
   width: 30%;
-  float: right;
-  margin-left: 5px;
-  margin-bottom: 20px; }
+  margin-right: 50px; }
+  .formSubButton:hover {
+    background-color: #0C8F49; }
 
 .previewMeme {
   border-radius: 5%;
   background-color: #FFE092;
   border: 1px solid #012837;
-  width: 30%;
-  float: right;
-  margin-right: 10px;
-  margin-bottom: 10px; }
+  width: 30%; }
+  .previewMeme:hover {
+    background-color: #FFC074; }
 
 .formGenerate {
   padding: 30px 15px;
@@ -271,7 +274,6 @@ header {
   float: none;
   margin: 20px auto; }
 
-/*PUT CODE IN HERE*/
 /*---*/
 /*****************************************
                 FOOTER
